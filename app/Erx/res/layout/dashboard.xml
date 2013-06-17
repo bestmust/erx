@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#3b3b3b" >
+ 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="10dip" >
+        
+        <!--  View Title Label -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:text="Dr. X: Home"
+            android:textSize="25dip"
+            android:textStyle="bold" />
+        
+        <!--  Patient Login Button -->       
+        <Button
+            android:id="@+id/btnPLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Login Patient"
+            android:onClick="openLoginPatient"
+             />
+        
+         <!--  Edit Doc Profile Button -->       
+        <Button
+            android:id="@+id/EditDocProfile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Edit Doctor's Profile" />
+        
+        <!--  Update Running Diseases Button -->       
+        <Button
+            android:id="@+id/updateDiseases"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Update Running Diseases" />
+        
+        <!--  Add Medicines Button -->       
+        <Button
+            android:id="@+id/AddMedicines"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Add Medicines" />
+        
+        <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textSize="20dip"
+        android:textColor="#21dbd4"
+        android:textStyle="bold"
+        android:id="@+id/btnLogout"
+        android:layout_marginTop="80dip"
+        android:background="@null"/>
+    </LinearLayout>
+ 
+</ScrollView>

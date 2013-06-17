@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#3b3b3b" >
+ 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="10dip" >
+        
+        <!--  View Title Label -->
+        <TextView
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:text="Dr. X: Home"
+            android:textSize="25dip"
+            android:textStyle="bold" />
+        
+        <!--  Patient Login Button -->
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patient: Patient Name"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+       
+        <Button
+            android:id="@+id/btnPLogin"
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Symptoms" 
+            android:onClick="openSymptoms"/>
+        
+         <!--  Edit Doc Profile Button -->       
+        <Button
+            android:id="@+id/btnPLogin"
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Parameters" 
+            android:onClick="openParameters"/>
+        
+        <!--  Update Running Diseases Button -->       
+        <Button
+            android:id="@+id/btnPLogin"
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Disease Diagnosed"
+            android:onClick="openDiseaseDiagnosed" />
+        
+        <!--  Add Medicines Button -->       
+        <Button
+            android:id="@+id/btnPLogin"
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Medicines"
+            android:onClick="openMedicines" />
+        
+        <!--  Add Medicines Button -->       
+        <Button
+            android:id="@+id/btnPLogin"
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="Tests" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginTop="20dip"
+            android:text="Notes, If any" >
+
+        </EditText>
+
+        <Button
+            android:id="@+id/button1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dip"
+            android:gravity="right"
+            android:text="Save Prescription" />
+        
+        <Button
+            android:id="@+id/button1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Print Prescription" />
+        
+        <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textSize="20dip"
+        android:textColor="#21dbd4"
+        android:textStyle="bold"
+        android:id="@+id/btnLogout"
+        android:layout_marginTop="80dip"
+        android:background="@null"/>
+    </LinearLayout>
+ 
+</ScrollView>
