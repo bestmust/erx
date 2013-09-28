@@ -7,6 +7,8 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import com.erxproject.erx.R;
+
  
 import android.content.Context;
  
@@ -16,7 +18,8 @@ public class UserFunctions {
      
     // Testing in localhost using wamp or xampp 
     private static String loginURL = "http://mustaqim.herobo.com/android_api/index.php";
-    private static String registerURL = "http://mustaqim.herobo.com/android_api/index.php";
+    //private static String registerURL = "http://mustaqim.herobo.com/android_api/index.php";
+    private static String registerURL = "http://mustaqim.herobo.com/android_api/index.php"; //getString(R.string.target_site);
      
     private static String login_tag = "login";
     private static String register_tag = "register";
