@@ -19,7 +19,11 @@ public class UserFunctions {
     // Testing in localhost using wamp or xampp 
     private static String loginURL = "http://mustaqim.herobo.com/android_api/index.php";
     //private static String registerURL = "http://mustaqim.herobo.com/android_api/index.php";
+<<<<<<< HEAD
     private static String registerURL = "http://mustaqim.herobo.com/android_api/index.php";//getString(R.string.target_site);
+=======
+    private static String registerURL = "http://mustaqim.herobo.com/android_api/index.php"; //getString(R.string.target_site);
+>>>>>>> 025582e0b6000086c9d13fd799eabd8fa47e5a94
      
     private static String login_tag = "login";
     private static String register_tag = "register";
