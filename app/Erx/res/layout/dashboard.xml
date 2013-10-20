@@ -12,10 +12,12 @@
         
         <!--  View Title Label -->
         <TextView
+            android:id="@+id/titleText"
             android:layout_width="fill_parent"
+            android:editable="true"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dip"
-            android:text="Dr. X: Home"
+            android:text="Home"
             android:textSize="25dip"
             android:textStyle="bold" />
         

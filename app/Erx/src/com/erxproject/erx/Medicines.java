@@ -3,6 +3,7 @@ package com.erxproject.erx;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.WindowManager;
 
 public class Medicines extends Activity {
 
@@ -10,6 +11,9 @@ public class Medicines extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.a_medicines);
+		
+		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+		
 	}
 
 }

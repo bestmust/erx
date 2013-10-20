@@ -18,6 +18,7 @@ public class DocPatientLogin extends Activity {
 	 public void openPatientHomePage(View view) {
         Intent intent = new Intent(this, DocPatientHomePage.class);
         startActivity(intent);
+        finish();
     }
 
 }

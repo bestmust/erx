@@ -6,19 +6,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
  
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
  
 import com.erxproject.erx.library.DatabaseHandler;
+import com.erxproject.erx.library.NetStatus;
 import com.erxproject.erx.library.UserFunctions;
  
 public class LoginActivity extends Activity {
-    Button btnLogin;
+    protected static final String EXTRA_MESSAGE = "";
+	Button btnLogin;
     Button btnLinkToRegister;
     EditText inputEmail;
     EditText inputPassword;
@@ -37,6 +42,8 @@ public class LoginActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
  
         // Importing all assets like buttons, text fields
         inputEmail = (EditText) findViewById(R.id.loginEmail);
@@ -52,7 +59,23 @@ public class LoginActivity extends Activity {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
                 UserFunctions userFunction = new UserFunctions();
-                JSONObject json = userFunction.loginUser(email, password);
+                Context context = getApplicationContext();
+                JSONObject json;
+                
+                if (NetStatus.getInstance(context).isOnline(context)) {
+
+                    //Toast t = Toast.makeText(context,"You are online!!!!",Toast.LENGTH_SHORT);
+                    //t.show();
+                    json = userFunction.loginUser(email, password);
+
+                } else {
+
+                    Toast t = Toast.makeText(context,"You are not online!!!!",8000);
+                    t.show();
+                    Log.v("Home", "############################You are not online!!!!");    
+                    return;
+                }
+                
  
                 // check for login response
                 try {
@@ -74,6 +97,7 @@ public class LoginActivity extends Activity {
                              
                             // Close all views before launching Dashboard
                             dashboard.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            dashboard.putExtra(EXTRA_MESSAGE, json_user.getString(KEY_NAME));
                             startActivity(dashboard);
                              
                             // Close Login Screen

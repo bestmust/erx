@@ -88,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dip"
             android:gravity="right"
+            android:onClick="savePrescription"
             android:text="Save Prescription" />
         
         <Button

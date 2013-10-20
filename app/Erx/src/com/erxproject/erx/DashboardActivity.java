@@ -5,16 +5,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.erxproject.erx.library.UserFunctions;
  
 public class DashboardActivity extends Activity {
     UserFunctions userFunctions;
     Button btnLogout;
+    TextView title;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        Intent intent = getIntent();
+        String name = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
          
+        title = (TextView) findViewById(R.id.titleText);
+        
+        //title.setText("Home");
+        
         /**
          * Dashboard Screen for the application
          * */       
