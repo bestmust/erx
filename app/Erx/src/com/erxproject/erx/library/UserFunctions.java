@@ -7,21 +7,19 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import android.R;
 import android.content.Context;
+import android.content.res.Resources;
 
 public class UserFunctions {
 
 	private JSONParser jsonParser;
+	private static String loginURL = Messages.getString("UserFunctions.site")+Messages.getString("UserFunctions.login_extn"); //$NON-NLS-1$
 
-	// Testing in localhost using wamp or xampp
-	private static String loginURL = "http://mustaqim.herobo.com/android_api/index.php";
-	// private static String registerURL =
-	// "http://mustaqim.herobo.com/android_api/index.php";
+	private static String registerURL = Messages.getString("UserFunctions.site")+Messages.getString("UserFunctions.login_extn");//$NON-NLS-1$
 
-	private static String registerURL = "http://mustaqim.herobo.com/android_api/index.php";// getString(R.string.target_site);
-
-	private static String login_tag = "login";
-	private static String register_tag = "register";
+	private static String login_tag = "login"; //$NON-NLS-1$
+	private static String register_tag = "register"; //$NON-NLS-1$
 
 	// constructor
 	public UserFunctions() {
@@ -50,11 +48,10 @@ public class UserFunctions {
 	public JSONObject loginUser(String email, String password) {
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag", login_tag));
-		params.add(new BasicNameValuePair("email", email));
-		params.add(new BasicNameValuePair("password", password));
+		params.add(new BasicNameValuePair("tag", login_tag)); //$NON-NLS-1$
+		params.add(new BasicNameValuePair("email", email)); //$NON-NLS-1$
+		params.add(new BasicNameValuePair("password", password)); //$NON-NLS-1$
 		JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
-		// return json
 		// Log.e("JSON", json.toString());
 		return json;
 	}
@@ -79,12 +76,12 @@ public class UserFunctions {
 			String address, String contact) {
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag", register_tag));
-		params.add(new BasicNameValuePair("name", name));
-		params.add(new BasicNameValuePair("email", email));
-		params.add(new BasicNameValuePair("password", password));
-		params.add(new BasicNameValuePair("address", address));
-		params.add(new BasicNameValuePair("contact", contact));
+		params.add(new BasicNameValuePair("tag", register_tag)); //$NON-NLS-1$
+		params.add(new BasicNameValuePair("name", name)); //$NON-NLS-1$
+		params.add(new BasicNameValuePair("email", email)); //$NON-NLS-1$
+		params.add(new BasicNameValuePair("password", password)); //$NON-NLS-1$
+		params.add(new BasicNameValuePair("address", address)); //$NON-NLS-1$
+		params.add(new BasicNameValuePair("contact", contact)); //$NON-NLS-1$
 
 		// getting JSON Object
 		JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);

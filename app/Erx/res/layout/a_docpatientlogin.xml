@@ -55,7 +55,8 @@
             android:background="@null"
             android:text="Register New Patient"
             android:textColor="#21dbd4"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="patientRegister" />
     </LinearLayout>
  
 </ScrollView>

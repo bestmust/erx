@@ -4,6 +4,7 @@
     <string name="app_name">Erx</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="target_site">http://mustaqim.herobo.com/android_api/index.php</string>
+    <string name="production_site">http://mustaqim.herobo.com/android_api/index.php</string>
+    <string name="test_site">http://192.168.1.7/android_api/index.php</string>
 
 </resources>

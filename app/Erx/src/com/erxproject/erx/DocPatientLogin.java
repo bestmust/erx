@@ -10,13 +10,18 @@ public class DocPatientLogin extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.a_docdatientlogin);
+		setContentView(R.layout.a_docpatientlogin);
 	}
 
 	public void openPatientHomePage(View view) {
 		Intent intent = new Intent(this, DocPatientHomePage.class);
 		startActivity(intent);
 		finish();
+	}
+	
+	public void patientRegister(View view) {
+		Intent intent = new Intent(this, PatientRegisterActivity.class);
+		startActivity(intent);
 	}
 
 }

@@ -69,6 +69,10 @@
         <activity
             android:label="Symptoms"
             android:name=".Symptoms"></activity>
+        <activity 
+            android:label="Register New Patient"
+            android:name=".PatientRegisterActivity"
+            ></activity>
                 
     </application>
      
