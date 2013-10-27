@@ -63,17 +63,16 @@ public class LoginActivity extends Activity {
 				JSONObject json;
 
 				if (!NetStatus.getInstance(context).isOnline(context)) {
-					
-					Toast t = Toast.makeText(context, "Please connect to Internet.",
-							8000);
+
+					Toast t = Toast.makeText(context,
+							"Please connect to Internet.", 8000);
 					t.show();
-					Log.v("Home",
-							"You are not online!!!!");
+					Log.v("Home", "You are not online!!!!");
 					return;
 				}
 
 				json = userFunction.loginUser(email, password);
-				
+
 				// check for login response
 				try {
 					if (json.getString(KEY_SUCCESS) != null) {

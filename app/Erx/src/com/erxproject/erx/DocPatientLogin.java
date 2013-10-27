@@ -18,7 +18,7 @@ public class DocPatientLogin extends Activity {
 		startActivity(intent);
 		finish();
 	}
-	
+
 	public void patientRegister(View view) {
 		Intent intent = new Intent(this, PatientRegisterActivity.class);
 		startActivity(intent);

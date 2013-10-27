@@ -7,16 +7,15 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
-import android.R;
 import android.content.Context;
-import android.content.res.Resources;
 
 public class UserFunctions {
 
 	private JSONParser jsonParser;
-	private static String loginURL = Messages.getString("UserFunctions.site")+Messages.getString("UserFunctions.login_extn"); //$NON-NLS-1$
+	private static String loginURL = Messages.getString("UserFunctions.site") + Messages.getString("UserFunctions.login_extn"); //$NON-NLS-1$
 
-	private static String registerURL = Messages.getString("UserFunctions.site")+Messages.getString("UserFunctions.login_extn");//$NON-NLS-1$
+	private static String registerURL = Messages
+			.getString("UserFunctions.site") + Messages.getString("UserFunctions.login_extn");//$NON-NLS-1$
 
 	private static String login_tag = "login"; //$NON-NLS-1$
 	private static String register_tag = "register"; //$NON-NLS-1$

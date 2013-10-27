@@ -9,10 +9,12 @@ public class NetStatus {
 
 	private static NetStatus instance = new NetStatus();
 	static Context context;
+
 	public static NetStatus getInstance(Context ctx) {
 		context = ctx;
 		return instance;
 	}
+
 	ConnectivityManager connectivityManager;
 	NetworkInfo wifiInfo, mobileInfo;
 
