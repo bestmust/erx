@@ -36,7 +36,7 @@
         
         <activity
             android:label="DocPatientHomePage"
-            android:name=".DocPatientHomePage"></activity>
+            android:name=".NewPrescription"></activity>
         
         <activity
             android:label="DocPatientLogin"

@@ -7,15 +7,25 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import android.content.Context;
+
+import com.erxproject.erx.R;
+
 public class PatientController {
 	private JSONParser jsonParser;
-	private static String patientURL = Messages.getString("UserFunctions.site") + Messages.getString("UserFunctions.patient_extn"); //$NON-NLS-1$
+	Context mContext;
+	//private static String patientURL = Messages.getString("UserFunctions.site") + Messages.getString("UserFunctions.patient_extn"); //$NON-NLS-1$
+	private String site;
+	private String patientExtension;
 	private static String login_tag = "login"; //$NON-NLS-1$
 	private static String register_tag = "register"; //$NON-NLS-1$
 
 	// constructor
-	public PatientController() {
+	public PatientController(Context context) {
 		jsonParser = new JSONParser();
+		mContext = context.getApplicationContext();
+		site = mContext.getString(R.string.production_site);
+		patientExtension = mContext.getString(R.string.patient_extension);
 	}
 
 	public JSONObject registerPatient(String name, String email,
@@ -30,8 +40,20 @@ public class PatientController {
 		params.add(new BasicNameValuePair("telephone", contact)); //$NON-NLS-1$
 
 		// getting JSON Object
-		JSONObject json = jsonParser.getJSONFromUrl(patientURL, params);
+		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension, params);
 		// return json
+		return json;
+	}
+	
+	public JSONObject loginPatient(String email) {
+		
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		
+		params.add(new BasicNameValuePair("tag", login_tag));
+		params.add(new BasicNameValuePair("email", email));
+		
+		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension, params);
+		
 		return json;
 	}
 

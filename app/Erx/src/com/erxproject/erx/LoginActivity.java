@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.erxproject.erx.library.DatabaseHandler;
 import com.erxproject.erx.library.NetStatus;
-import com.erxproject.erx.library.UserFunctions;
+import com.erxproject.erx.library.MainController;
 
 public class LoginActivity extends Activity {
 	protected static final String EXTRA_MESSAGE = "";
@@ -58,20 +58,20 @@ public class LoginActivity extends Activity {
 			public void onClick(View view) {
 				String email = inputEmail.getText().toString();
 				String password = inputPassword.getText().toString();
-				UserFunctions userFunction = new UserFunctions();
+				MainController mainController = new MainController(getApplicationContext());
 				Context context = getApplicationContext();
 				JSONObject json;
 
 				if (!NetStatus.getInstance(context).isOnline(context)) {
 
 					Toast t = Toast.makeText(context,
-							"Please connect to Internet.", 8000);
+							"Please connect to Internet.", Toast.LENGTH_SHORT);
 					t.show();
 					Log.v("Home", "You are not online!!!!");
 					return;
 				}
 
-				json = userFunction.loginUser(email, password);
+				json = mainController.loginUser(email, password);
 
 				// check for login response
 				try {
@@ -86,7 +86,7 @@ public class LoginActivity extends Activity {
 							JSONObject json_user = json.getJSONObject("user");
 
 							// Clear all previous data in database
-							userFunction.logoutUser(getApplicationContext());
+							mainController.logoutUser(getApplicationContext());
 							db.addUser(json_user.getString(KEY_NAME),
 									json_user.getString(KEY_EMAIL),
 									json.getString(KEY_UID),
@@ -107,8 +107,8 @@ public class LoginActivity extends Activity {
 							finish();
 						} else {
 							// Error in login
-							loginErrorMsg
-									.setText("Incorrect username/password");
+							loginErrorMsg.setText(json
+									.getString(KEY_ERROR_MSG));
 						}
 					}
 				} catch (JSONException e) {
@@ -125,7 +125,6 @@ public class LoginActivity extends Activity {
 				Intent i = new Intent(getApplicationContext(),
 						RegisterActivity.class);
 				startActivity(i);
-				finish();
 			}
 		});
 	}

@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-public class DocPatientHomePage extends Activity {
+public class NewPrescription extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.a_docpatienthomepage);
+		
+		setTitle(R.string.new_prescription_title);
+		
 	}
 
 	public void openDiseaseDiagnosed(View view) {

@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.erxproject.erx.library.DatabaseHandler;
-import com.erxproject.erx.library.UserFunctions;
+import com.erxproject.erx.library.MainController;
 
 public class RegisterActivity extends Activity {
 	Button btnRegister;
@@ -61,7 +61,7 @@ public class RegisterActivity extends Activity {
 				String password = inputPassword.getText().toString();
 				String address = inputAddress.getText().toString();
 				String contact = inputContact.getText().toString();
-				UserFunctions userFunction = new UserFunctions();
+				MainController userFunction = new MainController(getApplicationContext());
 				JSONObject json = userFunction.registerUser(name, email,
 						password, address, contact);
 
@@ -111,6 +111,7 @@ public class RegisterActivity extends Activity {
 			public void onClick(View view) {
 				Intent i = new Intent(getApplicationContext(),
 						LoginActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(i);
 				// Close Registration View
 				finish();

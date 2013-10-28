@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.erxproject.erx.library.UserFunctions;
+import com.erxproject.erx.library.MainController;
 
 public class DashboardActivity extends Activity {
-	UserFunctions userFunctions;
+	MainController mainController;
 	Button btnLogout;
 	TextView title;
 
@@ -21,16 +21,14 @@ public class DashboardActivity extends Activity {
 		Intent intent = getIntent();
 		String name = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
 
-		title = (TextView) findViewById(R.id.titleText);
-
-		// title.setText("Home");
+		setTitle(name + "'s Home");
 
 		/**
 		 * Dashboard Screen for the application
 		 * */
 		// Check login status in database
-		userFunctions = new UserFunctions();
-		if (userFunctions.isUserLoggedIn(getApplicationContext())) {
+		mainController = new MainController(getApplicationContext());
+		if (mainController.isUserLoggedIn()) {
 			// user already logged in show databoard
 			setContentView(R.layout.dashboard);
 			btnLogout = (Button) findViewById(R.id.btnLogout);
@@ -40,7 +38,7 @@ public class DashboardActivity extends Activity {
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					userFunctions.logoutUser(getApplicationContext());
+					mainController.logoutUser(getApplicationContext());
 					Intent login = new Intent(getApplicationContext(),
 							LoginActivity.class);
 					login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

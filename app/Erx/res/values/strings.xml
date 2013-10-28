@@ -4,7 +4,13 @@
     <string name="app_name">Erx</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="production_site">http://mustaqim.herobo.com/android_api/index.php</string>
-    <string name="test_site">http://192.168.1.7/android_api/index.php</string>
+    <string name="production_site">http://mustaqim.herobo.com</string>
+    <string name="test_site">http://192.168.1.7</string>
+    <string name="main_extension">/android_api/index.php</string>
+    <string name="disease_title">Disease Diagnosed</string>
+    <string name="new_prescription_title">New Prescription</string>
+    <string name="register_extension">/android_api/index.php</string>
+    <string name="patient_extension">/android_api/patient.php</string>
+    <string name="docpatientlogin_title">Patient Login</string>
 
 </resources>

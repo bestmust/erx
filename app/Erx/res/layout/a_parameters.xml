@@ -10,13 +10,6 @@
         android:orientation="vertical"
         android:padding="10dip" >
         <!--  View Title Label -->
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dip"
-            android:text="PARAMETERS"
-            android:textSize="25dip"
-            android:textStyle="bold" />
         <!--  Name Label -->
         <TextView
             android:layout_width="fill_parent"

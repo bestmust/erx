@@ -13,6 +13,8 @@ public class DiseaseDiagnosed extends Activity {
 
 		this.getWindow().setSoftInputMode(
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+		
+		setTitle(R.string.disease_title);
 
 	}
 

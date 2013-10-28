@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 import com.erxproject.erx.library.DatabaseHandler;
 import com.erxproject.erx.library.PatientController;
-import com.erxproject.erx.library.UserFunctions;
+import com.erxproject.erx.library.MainController;
 
 import android.content.Context;
 import android.content.Intent;
@@ -67,7 +67,7 @@ public class PatientRegisterFragment extends Fragment {
 				String password = inputPassword.getText().toString();
 				String address = inputAddress.getText().toString();
 				String contact = inputContact.getText().toString();
-				PatientController patientController = new PatientController();
+				PatientController patientController = new PatientController(null);
 				JSONObject json = patientController.registerPatient(name,
 						email, password, address, contact);
 				Context context = getActivity();

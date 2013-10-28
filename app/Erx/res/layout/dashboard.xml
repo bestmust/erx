@@ -9,18 +9,7 @@
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:padding="10dip" >
-        
-        <!--  View Title Label -->
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="fill_parent"
-            android:editable="true"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dip"
-            android:text="Home"
-            android:textSize="25dip"
-            android:textStyle="bold" />
-        
+         
         <!--  Patient Login Button -->       
         <Button
             android:id="@+id/btnPLogin"
