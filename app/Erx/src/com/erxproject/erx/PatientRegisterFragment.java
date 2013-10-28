@@ -3,9 +3,9 @@ package com.erxproject.erx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.erxproject.erx.controller.MainController;
+import com.erxproject.erx.controller.PatientController;
 import com.erxproject.erx.library.DatabaseHandler;
-import com.erxproject.erx.library.PatientController;
-import com.erxproject.erx.library.MainController;
 
 import android.content.Context;
 import android.content.Intent;

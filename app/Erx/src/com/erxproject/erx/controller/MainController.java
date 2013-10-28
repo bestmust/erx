@@ -1,4 +1,4 @@
-package com.erxproject.erx.library;
+package com.erxproject.erx.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import com.erxproject.erx.R;
+import com.erxproject.erx.library.DatabaseHandler;
+import com.erxproject.erx.library.JSONParser;
 
 import android.content.Context;
 

@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.erxproject.erx.controller.MainController;
 import com.erxproject.erx.library.DatabaseHandler;
-import com.erxproject.erx.library.MainController;
 
 public class RegisterActivity extends Activity {
 	Button btnRegister;

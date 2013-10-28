@@ -3,8 +3,8 @@ package com.erxproject.erx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.erxproject.erx.controller.PatientController;
 import com.erxproject.erx.library.DatabaseHandler;
-import com.erxproject.erx.library.PatientController;
 
 import android.app.Activity;
 import android.content.Intent;

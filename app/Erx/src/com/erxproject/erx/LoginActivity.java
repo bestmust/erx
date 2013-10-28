@@ -15,9 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.erxproject.erx.controller.MainController;
 import com.erxproject.erx.library.DatabaseHandler;
 import com.erxproject.erx.library.NetStatus;
-import com.erxproject.erx.library.MainController;
 
 public class LoginActivity extends Activity {
 	protected static final String EXTRA_MESSAGE = "";

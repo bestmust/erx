@@ -12,5 +12,6 @@
     <string name="register_extension">/android_api/index.php</string>
     <string name="patient_extension">/android_api/patient.php</string>
     <string name="docpatientlogin_title">Patient Login</string>
+    <string name="symptoms_title">Symptoms</string>
 
 </resources>

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.erxproject.erx.library.MainController;
+import com.erxproject.erx.controller.MainController;
 
 public class DashboardActivity extends Activity {
 	MainController mainController;

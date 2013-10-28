@@ -1,4 +1,4 @@
-package com.erxproject.erx.library;
+package com.erxproject.erx.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import android.content.Context;
 
 import com.erxproject.erx.R;
+import com.erxproject.erx.library.JSONParser;
 
 public class PatientController {
 	private JSONParser jsonParser;
