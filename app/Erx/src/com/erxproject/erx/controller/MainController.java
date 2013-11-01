@@ -28,7 +28,7 @@ public class MainController {
 		jsonParser = new JSONParser();
 		mContext = context.getApplicationContext();
 		site = mContext.getString(R.string.production_site);
-		mainExtension = mContext.getString(R.string.patient_extension);
+		mainExtension = mContext.getString(R.string.main_extension);
 		registerExtension = mContext.getString(R.string.register_extension);
 	}
 

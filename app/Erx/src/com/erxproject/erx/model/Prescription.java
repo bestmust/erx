@@ -9,9 +9,10 @@ public class Prescription {
 	
 	private Context mContext;
 	private ArrayList<Symptom> mSymptoms;
+	private static Prescription mPrescription;
 	
-	public Prescription(Context context) {
-		mContext = context;
+	private Prescription(Context context) {
+		mContext = context.getApplicationContext();
 		mSymptoms = new ArrayList<Symptom>();
 		
 		for(int i=0;i<10;i++) {
@@ -20,6 +21,13 @@ public class Prescription {
 			mSymptoms.add(s);
 		}
 		
+	}
+	
+	public static Prescription get(Context context) {
+		if (mPrescription==null) {
+			mPrescription = new Prescription(context);
+		}
+			return mPrescription;
 	}
 
 	public ArrayList<Symptom> getSymptoms() {
