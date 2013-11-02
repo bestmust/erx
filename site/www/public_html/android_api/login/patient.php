@@ -27,7 +27,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
         $password = $_POST['password'];
  
         // check for user
-        $user = $db->getUserByEmailAndPassword($email, $password);
+        $user = $db->getPatientByEmail($email);
         if ($user != false) {
             // user found
             // echo json with success = 1
@@ -42,7 +42,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             // user not found
             // echo json with error = 1
             $response["error"] = 1;
-            $response["error_msg"] = "Incorrect email or password!";
+            $response["error_msg"] = "Incorrect email";
             echo json_encode($response);
         }
     } else if ($tag == 'register') {

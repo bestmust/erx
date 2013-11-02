@@ -1,9 +1,9 @@
 <?php
- 
+
 class DB_Functions {
- 
+
     private $db;
- 
+
     //put your code here
     // constructor
     function __construct() {
@@ -12,12 +12,12 @@ class DB_Functions {
         $this->db = new DB_Connect();
         $this->db->connect();
     }
- 
+
     // destructor
     function __destruct() {
-         
+        
     }
- 
+
     /**
      * Storing new user
      * returns user details
@@ -39,7 +39,7 @@ class DB_Functions {
             return false;
         }
     }
- 
+
     /**
      * Get user by email and password
      */
@@ -62,7 +62,7 @@ class DB_Functions {
             return false;
         }
     }
- 
+
     /**
      * Check user is existed or not
      */
@@ -77,33 +77,33 @@ class DB_Functions {
             return false;
         }
     }
- 
+
     /**
      * Encrypting password
      * @param password
      * returns salt and encrypted password
      */
     public function hashSSHA($password) {
- 
+
         $salt = sha1(rand());
         $salt = substr($salt, 0, 10);
         $encrypted = base64_encode(sha1($password . $salt, true) . $salt);
         $hash = array("salt" => $salt, "encrypted" => $encrypted);
         return $hash;
     }
- 
+
     /**
      * Decrypting password
      * @param salt, password
      * returns hash string
      */
     public function checkhashSSHA($salt, $password) {
- 
+
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
- 
+
         return $hash;
     }
- 
+
 }
- 
+
 ?>

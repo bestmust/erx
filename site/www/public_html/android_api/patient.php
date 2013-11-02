@@ -1,33 +1,36 @@
 <?php
+
 /**
  * File to handle all API requests
  * Accepts GET and POST
  * 
  * Each request will be identified by TAG
  * Response will be JSON data
- 
+
   /**
  * check for POST request 
  */
 if (isset($_POST['tag']) && $_POST['tag'] != '') {
     // get tag
     $tag = $_POST['tag'];
- 
+
     // include db handler
     require_once 'include/DB_Functions_Patient.php';
     $db = new DB_Functions_Patient();
- 
+
     // response Array
     $response = array("tag" => $tag, "success" => 0, "error" => 0);
- 
+
     // check for tag type
     if ($tag == 'login') {
         // Request type is check Login
         $email = $_POST['email'];
         $password = $_POST['password'];
- 
+
         // check for user
-        $user = $db->getUserByEmailAndPassword($email, $password);
+        //$user = $db->getUserByEmailAndPassword($email, $password);
+        $user = $db->getPatientByEmail($email);
+        
         if ($user != false) {
             // user found
             // echo json with success = 1
@@ -42,7 +45,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             // user not found
             // echo json with error = 1
             $response["error"] = 1;
-            $response["error_msg"] = "Incorrect email or password!";
+            $response["error_msg"] = "Incorrect email";
             echo json_encode($response);
         }
     } else if ($tag == 'register') {
@@ -52,7 +55,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
         $password = $_POST['password'];
         $address = $_POST['address'];
         $telephone = $_POST['telephone'];
- 
+
         // check if user is already existed
         if ($db->isPatientExisted($email)) {
             // user is already existed - error response
@@ -61,11 +64,11 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             echo json_encode($response);
         } else {
             // store user
-            $user = $db->storePatient($name, $email, $password,$address,$telephone);
+            $user = $db->storePatient($name, $email, $password, $address, $telephone);
             if ($user) {
                 // user stored successfully
                 $response["success"] = 1;
-                $response["patient_id"] = $user["patient_id"];
+                $response["person_id"] = $user["person_id"];
                 $response["patient"]["name"] = $user["name"];
                 $response["patient"]["email"] = $user["email"];
                 echo json_encode($response);
