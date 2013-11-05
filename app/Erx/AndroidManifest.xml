@@ -80,6 +80,10 @@
             android:name=".SymptomsListActivity"
             android:label="Symptoms" >
         </activity>
+        <activity
+            android:name=".SymptomAddEditActivity"
+            android:label="Symptoms" >
+        </activity>
     </application>
 
     <!-- Allow to connect with internet -->
