@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `a8748905_android`
+-- Database: `1541215_android`
 --
-CREATE DATABASE IF NOT EXISTS `a8748905_android` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `a8748905_android`;
+CREATE DATABASE IF NOT EXISTS `1541215_android` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `1541215_android`;
 
 -- --------------------------------------------------------
 
