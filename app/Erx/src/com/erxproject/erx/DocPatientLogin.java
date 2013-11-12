@@ -33,34 +33,33 @@ public class DocPatientLogin extends Activity {
 		setContentView(R.layout.a_docpatientlogin);
 		inputEmail = (EditText) findViewById(R.id.PloginEmail);
 		loginErrorMsg = (TextView) findViewById(R.id.login_error);
-		
+
 		setTitle(R.string.docpatientlogin_title);
 
 	}
 
 	public void openPatientHomePage(View view) {
-		
+
 		JSONObject json;
 		String email = inputEmail.getText().toString();
 		PatientController pc = new PatientController(getApplicationContext());
-		
+
 		json = pc.loginPatient(email);
-		
+
 		// check for login response
 		try {
 			if (json.getString(KEY_SUCCESS) != null) {
 				loginErrorMsg.setText("");
 				String res = json.getString(KEY_SUCCESS);
 				if (Integer.parseInt(res) == 1) {
-					
+
 					Intent intent = new Intent(this, NewPrescription.class);
 					startActivity(intent);
 					finish();
-					
+
 				} else {
 					// Error in login
-					loginErrorMsg.setText(json
-							.getString(KEY_ERROR_MSG));
+					loginErrorMsg.setText(json.getString(KEY_ERROR_MSG));
 				}
 			}
 		} catch (JSONException e) {

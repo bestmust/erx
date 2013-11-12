@@ -13,9 +13,9 @@ public class NewPrescription extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.a_docpatienthomepage);
-		
+
 		setTitle(R.string.new_prescription_title);
-		
+
 	}
 
 	public void openDiseaseDiagnosed(View view) {
@@ -34,7 +34,7 @@ public class NewPrescription extends Activity {
 	}
 
 	public void openSymptoms(View view) {
-		//Intent intent = new Intent(this, Symptoms.class);
+		// Intent intent = new Intent(this, Symptoms.class);
 		Intent intent = new Intent(this, SymptomsListActivity.class);
 		startActivity(intent);
 	}

@@ -14,50 +14,51 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class SymptomAddEditFragment extends Fragment {
-	
+
 	EditText inputSymptom;
 	EditText inputDetails;
 	Button btnSave;
 	Button btnCancel;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_symptom_add_edit, parent, false);
-		
+	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.fragment_symptom_add_edit, parent,
+				false);
+
 		inputSymptom = (EditText) v.findViewById(R.id.inputSymptomName);
 		inputDetails = (EditText) v.findViewById(R.id.inputSymptomDetails);
 		btnSave = (Button) v.findViewById(R.id.btnSymptomSave);
 		btnCancel = (Button) v.findViewById(R.id.btnSymptomCancel);
-		
+
 		btnSave.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Symptom s = new Symptom();
 				s.setName(inputSymptom.getText().toString());
 				s.setDetails(inputDetails.getText().toString());
-				
+
 				Prescription prescription = Prescription.get(getActivity());
 				ArrayList<Symptom> symptomList = prescription.getSymptoms();
 				symptomList.add(s);
 				getActivity().finish();
 			}
 		});
-		
+
 		btnCancel.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				getActivity().finish();
 			}
 		});
-		
-		
-	return v;
+
+		return v;
 	}
 }

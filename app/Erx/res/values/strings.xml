@@ -4,7 +4,8 @@
     <string name="app_name">Erx</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="production_site">http://mustaqim.co.nf</string>
+    <string name="site">http://192.168.1.6</string>
+    <string name="roduction_site">http://mustaqim.co.nf</string>
     <string name="test_site">http://192.168.1.7</string>
     <string name="main_extension">/android_api/index.php</string>
     <string name="disease_title">Disease Diagnosed</string>

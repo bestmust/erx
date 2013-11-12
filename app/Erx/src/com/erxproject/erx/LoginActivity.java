@@ -58,7 +58,8 @@ public class LoginActivity extends Activity {
 			public void onClick(View view) {
 				String email = inputEmail.getText().toString();
 				String password = inputPassword.getText().toString();
-				MainController mainController = new MainController(getApplicationContext());
+				MainController mainController = new MainController(
+						getApplicationContext());
 				Context context = getApplicationContext();
 				JSONObject json;
 
@@ -107,8 +108,7 @@ public class LoginActivity extends Activity {
 							finish();
 						} else {
 							// Error in login
-							loginErrorMsg.setText(json
-									.getString(KEY_ERROR_MSG));
+							loginErrorMsg.setText(json.getString(KEY_ERROR_MSG));
 						}
 					}
 				} catch (JSONException e) {

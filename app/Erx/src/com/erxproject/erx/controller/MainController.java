@@ -27,7 +27,7 @@ public class MainController {
 	public MainController(Context context) {
 		jsonParser = new JSONParser();
 		mContext = context.getApplicationContext();
-		site = mContext.getString(R.string.production_site);
+		site = mContext.getString(R.string.site);
 		mainExtension = mContext.getString(R.string.main_extension);
 		registerExtension = mContext.getString(R.string.register_extension);
 	}
@@ -57,7 +57,8 @@ public class MainController {
 		params.add(new BasicNameValuePair("tag", login_tag)); //$NON-NLS-1$
 		params.add(new BasicNameValuePair("email", email)); //$NON-NLS-1$
 		params.add(new BasicNameValuePair("password", password)); //$NON-NLS-1$
-		JSONObject json = jsonParser.getJSONFromUrl(site + mainExtension, params);
+		JSONObject json = jsonParser.getJSONFromUrl(site + mainExtension,
+				params);
 		// Log.e("JSON", json.toString());
 		return json;
 	}
@@ -90,7 +91,8 @@ public class MainController {
 		params.add(new BasicNameValuePair("contact", contact)); //$NON-NLS-1$
 
 		// getting JSON Object
-		JSONObject json = jsonParser.getJSONFromUrl(site + registerExtension, params);
+		JSONObject json = jsonParser.getJSONFromUrl(site + registerExtension,
+				params);
 		// return json
 		return json;
 	}

@@ -9,25 +9,26 @@ import android.widget.Button;
 public class SymptomsListActivity extends SingleFragmentActivityWithAdd {
 
 	Button addButton;
-	
+
 	@Override
 	protected Fragment createFragment() {
 		// TODO Auto-generated method stub
 		return new SymptomsListFragment();
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		addButton  = (Button) findViewById(R.id.addButton);
+		addButton = (Button) findViewById(R.id.addButton);
 		addButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(SymptomsListActivity.this,SymptomAddEditActivity.class);
+				Intent i = new Intent(SymptomsListActivity.this,
+						SymptomAddEditActivity.class);
 				startActivity(i);
 			}
-			
+
 		});
 	}
 }

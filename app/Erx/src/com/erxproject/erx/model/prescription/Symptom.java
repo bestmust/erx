@@ -11,7 +11,7 @@ public class Symptom {
 	public void setName(String mName) {
 		this.mName = mName;
 	}
-	
+
 	@Override
 	public String toString() {
 		return mName;

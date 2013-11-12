@@ -67,7 +67,8 @@ public class PatientRegisterFragment extends Fragment {
 				String password = inputPassword.getText().toString();
 				String address = inputAddress.getText().toString();
 				String contact = inputContact.getText().toString();
-				PatientController patientController = new PatientController(getActivity().getApplicationContext());
+				PatientController patientController = new PatientController(
+						getActivity().getApplicationContext());
 				JSONObject json = patientController.registerPatient(name,
 						email, password, address, contact);
 				Context context = getActivity();

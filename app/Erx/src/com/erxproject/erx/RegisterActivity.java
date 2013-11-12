@@ -61,7 +61,8 @@ public class RegisterActivity extends Activity {
 				String password = inputPassword.getText().toString();
 				String address = inputAddress.getText().toString();
 				String contact = inputContact.getText().toString();
-				MainController userFunction = new MainController(getApplicationContext());
+				MainController userFunction = new MainController(
+						getApplicationContext());
 				JSONObject json = userFunction.registerUser(name, email,
 						password, address, contact);
 

@@ -8,20 +8,18 @@ import android.widget.Button;
 
 public abstract class SingleFragmentActivityWithAdd extends FragmentActivity {
 	protected abstract Fragment createFragment();
-		
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fragment_with_add);
 
 		FragmentManager fm = getSupportFragmentManager();
-		Fragment fragment = fm
-				.findFragmentById(R.id.FragmentContainer);
+		Fragment fragment = fm.findFragmentById(R.id.FragmentContainer);
 
 		if (fragment == null) {
 			fragment = createFragment();
-			fm.beginTransaction()
-					.add(R.id.FragmentContainer, fragment)
+			fm.beginTransaction().add(R.id.FragmentContainer, fragment)
 					.commit();
 		}
 

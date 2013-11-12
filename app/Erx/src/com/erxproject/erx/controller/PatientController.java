@@ -25,7 +25,7 @@ public class PatientController {
 	public PatientController(Context context) {
 		jsonParser = new JSONParser();
 		mContext = context.getApplicationContext();
-		site = mContext.getString(R.string.production_site);
+		site = mContext.getString(R.string.site);
 		patientExtension = mContext.getString(R.string.patient_extension);
 	}
 
@@ -41,20 +41,22 @@ public class PatientController {
 		params.add(new BasicNameValuePair("telephone", contact)); //$NON-NLS-1$
 
 		// getting JSON Object
-		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension, params);
+		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension,
+				params);
 		// return json
 		return json;
 	}
-	
+
 	public JSONObject loginPatient(String email) {
-		
+
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		
+
 		params.add(new BasicNameValuePair("tag", login_tag));
 		params.add(new BasicNameValuePair("email", email));
-		
-		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension, params);
-		
+
+		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension,
+				params);
+
 		return json;
 	}
 

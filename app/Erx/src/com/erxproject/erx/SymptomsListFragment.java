@@ -26,36 +26,39 @@ public class SymptomsListFragment extends ListFragment {
 		mSymptoms = tempPrescription.getSymptoms();
 
 		SymptomsAdapter adapter = new SymptomsAdapter(mSymptoms);
-		
+
 		setListAdapter(adapter);
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
-		((SymptomsAdapter)getListAdapter()).notifyDataSetChanged();
+		((SymptomsAdapter) getListAdapter()).notifyDataSetChanged();
 	}
-	
+
 	private class SymptomsAdapter extends ArrayAdapter<Symptom> {
 
 		public SymptomsAdapter(ArrayList<Symptom> Symptoms) {
 			super(getActivity(), 0, Symptoms);
 		}
-		
+
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			
-			if(convertView == null) {
-				convertView = getActivity().getLayoutInflater().inflate(R.layout.list_item_symptom, null);
+
+			if (convertView == null) {
+				convertView = getActivity().getLayoutInflater().inflate(
+						R.layout.list_item_symptom, null);
 			}
-			
+
 			Symptom s = getItem(position);
-			
-			TextView symptomNumberTextView = (TextView) convertView.findViewById(R.id.symptomNumberTextView);
-			TextView symptomTitleTextView = (TextView) convertView.findViewById(R.id.symptomTitleTextView);
+
+			TextView symptomNumberTextView = (TextView) convertView
+					.findViewById(R.id.symptomNumberTextView);
+			TextView symptomTitleTextView = (TextView) convertView
+					.findViewById(R.id.symptomTitleTextView);
 			symptomNumberTextView.setText("" + position + " ");
 			symptomTitleTextView.setText(s.getName());
-			
+
 			return convertView;
 		}
 
