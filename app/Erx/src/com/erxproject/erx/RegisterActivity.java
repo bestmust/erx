@@ -37,7 +37,7 @@ public class RegisterActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.register);
+		setContentView(R.layout.activity_doctor_register);
 
 		this.getWindow().setSoftInputMode(
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -87,7 +87,7 @@ public class RegisterActivity extends Activity {
 							// Launch Dashboard Screen
 							Intent dashboard = new Intent(
 									getApplicationContext(),
-									DashboardActivity.class);
+									DoctorHomeActivity.class);
 							// Close all views before launching Dashboard
 							dashboard.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 							startActivity(dashboard);

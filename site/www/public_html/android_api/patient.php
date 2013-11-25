@@ -24,10 +24,10 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     if ($tag == 'login') {
         // Request type is check Login
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        //$password = $_POST['password'];
  
         // check for user
-        $user = $db->getUserByEmailAndPassword($email, $password);
+        $user = $db->getPatientByEmail($email);
         if ($user != false) {
             // user found
             // echo json with success = 1

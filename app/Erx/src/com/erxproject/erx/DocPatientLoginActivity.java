@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class DocPatientLogin extends Activity {
+public class DocPatientLoginActivity extends Activity {
 
 	EditText inputEmail;
 	EditText inputPassword;
@@ -30,7 +30,7 @@ public class DocPatientLogin extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.a_docpatientlogin);
+		setContentView(R.layout.activity_docpatientlogin);
 		inputEmail = (EditText) findViewById(R.id.PloginEmail);
 		loginErrorMsg = (TextView) findViewById(R.id.login_error);
 
@@ -53,7 +53,7 @@ public class DocPatientLogin extends Activity {
 				String res = json.getString(KEY_SUCCESS);
 				if (Integer.parseInt(res) == 1) {
 
-					Intent intent = new Intent(this, NewPrescription.class);
+					Intent intent = new Intent(this, DocPatientHomeActivity.class);
 					startActivity(intent);
 					finish();
 

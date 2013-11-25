@@ -83,7 +83,25 @@ class DB_Functions_Patient {
             return false;
         }
     }
- 
+    
+    
+ /**
+     * Get user by email and password
+     */
+    public function getPatientByEmail($email) {
+        $result = mysql_query("SELECT * FROM users WHERE email = '$email'") or die(mysql_error());
+        // check for result 
+        $no_of_rows = mysql_num_rows($result);
+        if ($no_of_rows > 0) {
+            $result = mysql_fetch_array($result);
+            
+                return $result;
+            
+        } else {
+            // user not found
+            return false;
+        }
+    }
     /**
      * Check user is existed or not
      */

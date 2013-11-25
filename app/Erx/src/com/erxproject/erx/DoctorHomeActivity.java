@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.erxproject.erx.controller.MainController;
 
-public class DashboardActivity extends Activity {
+public class DoctorHomeActivity extends Activity {
 	MainController mainController;
 	Button btnLogout;
 	TextView title;
@@ -30,7 +30,7 @@ public class DashboardActivity extends Activity {
 		mainController = new MainController(getApplicationContext());
 		if (mainController.isUserLoggedIn()) {
 			// user already logged in show databoard
-			setContentView(R.layout.dashboard);
+			setContentView(R.layout.activity_doctor_home);
 			btnLogout = (Button) findViewById(R.id.btnLogout);
 
 			btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class DashboardActivity extends Activity {
 	}
 
 	public void openLoginPatient(View view) {
-		Intent intent = new Intent(this, DocPatientLogin.class);
+		Intent intent = new Intent(this, DocPatientLoginActivity.class);
 		startActivity(intent);
 	}
 }

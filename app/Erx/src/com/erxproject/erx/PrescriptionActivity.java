@@ -7,19 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-public class NewPrescription extends Activity {
+public class PrescriptionActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.a_docpatienthomepage);
+		setContentView(R.layout.activity_prescription);
 
 		setTitle(R.string.new_prescription_title);
 
 	}
 
 	public void openDiseaseDiagnosed(View view) {
-		Intent intent = new Intent(this, DiseaseDiagnosed.class);
+		Intent intent = new Intent(this, DiseaseDiagnosedActivity.class);
 		startActivity(intent);
 	}
 
