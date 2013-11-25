@@ -1,4 +1,5 @@
 <?php
+//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 /**
  * File to handle all API requests
  * Accepts GET and POST
@@ -24,6 +25,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     if ($tag == 'login') {
         // Request type is check Login
         $email = $_POST['email'];
+        // TODO put doctor login here.
         //$password = $_POST['password'];
  
         // check for user

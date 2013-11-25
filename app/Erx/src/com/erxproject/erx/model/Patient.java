@@ -12,6 +12,7 @@ public class Patient {
 	private static Patient sPatient;
 	private Context mContext;
 	private int personId;
+	private int patientId;
 	private String name;
 	private String eMail;
 	private String uid;

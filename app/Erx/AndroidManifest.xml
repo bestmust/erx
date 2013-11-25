@@ -30,7 +30,7 @@
 
         <!-- Register Activity -->
         <activity
-            android:name=".RegisterActivity"
+            android:name=".DoctorRegisterActivity"
             android:label="Register New Account" >
         </activity>
         <activity

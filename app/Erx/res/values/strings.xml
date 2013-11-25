@@ -4,7 +4,7 @@
     <string name="app_name">Erx</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="site">http://192.168.1.4</string>
+    <string name="site">http://mustaqim.ignorelist.com/</string>
     <string name="production_site">http://mustaqim.co.nf</string>
     <string name="test_site">http://mustaqim.herobo.com</string>
     <string name="local_site">http://192.168.1.4</string>
@@ -23,5 +23,6 @@
     <string name="key_email">email</string>
     <string name="key_created_at">created_at</string>
     <string name="key_person_id">person_id</string>
+    <string name="prescription_extension">/android_api/prescription.php</string>
 
 </resources>

@@ -125,7 +125,7 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				Intent i = new Intent(getApplicationContext(),
-						RegisterActivity.class);
+						DoctorRegisterActivity.class);
 				startActivity(i);
 			}
 		});

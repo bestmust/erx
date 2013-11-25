@@ -16,22 +16,22 @@ class DB_Connect {
     public function connect() {
         require_once 'config.php';
         
-        $mysql_host = "localhost";
-        $mysql_database = "1541215_android";
-        $mysql_user = "root";
-        $mysql_password = "tiger123x";
+        $mysqli_host = "localhost";
+        $mysqli_database = "1541215_android";
+        $mysqli_user = "root";
+        $mysqli_password = "tiger123x";
          
         
-        $con = mysql_connect($mysql_host, $mysql_user, $mysql_password);
+        $mysqli = new mysqli($mysqli_host, $mysqli_user, $mysqli_password, $mysqli_database);
         // selecting database
-        mysql_select_db($mysql_database);
+        //mysqli_select_db($con,$mysqli_database);
          // return database handler
-        return $con;
+        return $mysqli;
     }
  
     // Closing database connection
     public function close() {
-        mysql_close();
+        mysqli_close();
     }
  
 }

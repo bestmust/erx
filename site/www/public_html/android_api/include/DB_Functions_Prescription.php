@@ -3,7 +3,6 @@
 class DB_Functions_Patient {
  
     private $db;
-    private $mysqli;
  
     //put your code here
     // constructor
@@ -11,7 +10,7 @@ class DB_Functions_Patient {
         require_once 'DB_Connect.php';
         // connecting to database
         $this->db = new DB_Connect();
-        $this->mysqli = $this->db->connect();
+        $this->db->connect();
     }
  
     // destructor
@@ -28,25 +27,25 @@ class DB_Functions_Patient {
         require_once 'DB_Functions.php';
         $dbFunctions = new DB_Functions();
         
-        $resultP = mysqli_query($this->mysqli,"INSERT INTO per_all_people_f(name, email, person_type, telephone ) VALUES('$name', '$email', 'P' , '$telephone');");
+        $resultP = mysqli_query("INSERT INTO per_all_people_f(name, email, person_type, telephone ) VALUES('$name', '$email', 'P' , '$telephone');");
         
         
         // check for successful store
         if ($resultP) {
             // get user details 
-            $personId = mysqli_insert_id($this->mysqli); // last inserted id
-            $result = mysqli_query($this->mysqli,"SELECT * FROM per_all_people_f WHERE person_id = $personId");
+            $personId = mysqli_insert_id(); // last inserted id
+            $result = mysqli_query("SELECT * FROM per_all_people_f WHERE person_id = $personId");
         
             $uuid = uniqid('', true);
             $hash = $dbFunctions->hashSSHA($password);
             $encrypted_password = $hash["encrypted"]; // encrypted password
             $salt = $hash["salt"]; // salt
         
-            $resultU = mysqli_query($this->mysqli,"INSERT INTO users(unique_id, name, email, person_id, encrypted_password, salt, created_at) VALUES('$uuid', '$name', '$email', '$personId', '$encrypted_password', '$salt', NOW())");
+            $resultU = mysqli_query("INSERT INTO users(unique_id, name, email, person_id, encrypted_password, salt, created_at) VALUES('$uuid', '$name', '$email', '$personId', '$encrypted_password', '$salt', NOW())");
             
-            $resultPatient = mysqli_query($this->mysqli,"INSERT INTO patient(person_id) VALUES('$personId')");
+            $resultPatient = mysqli_query("INSERT INTO patient(person_id) VALUES('$personId')");
             
-            $resultAddress = mysqli_query($this->mysqli,"INSERT INTO address(house_no,person_id) VALUES('$address','$personId')");
+            $resultAddress = mysqli_query("INSERT INTO address(house_no,person_id) VALUES('$address','$personId')");
             
             // return user details
                     
@@ -66,7 +65,7 @@ class DB_Functions_Patient {
      * Get user by email and password
      */
     public function getUserByEmailAndPassword($email, $password) {
-        $result = mysqli_query($this->mysqli,"SELECT * FROM users WHERE email = '$email'") or die(mysqli_error($this->mysqli));
+        $result = mysqli_query("SELECT * FROM users WHERE email = '$email'") or die(mysqli_error());
         // check for result 
         $no_of_rows = mysqli_num_rows($result);
         if ($no_of_rows > 0) {
@@ -90,7 +89,7 @@ class DB_Functions_Patient {
      * Get user by email and password
      */
     public function getPatientByEmail($email) {
-        $result = mysqli_query($this->mysqli,"SELECT * FROM users WHERE email = '$email'") or die(mysqli_error($this->mysqli));
+        $result = mysqli_query("SELECT * FROM users WHERE email = '$email'") or die(mysqli_error());
         // check for result 
         $no_of_rows = mysqli_num_rows($result);
         if ($no_of_rows > 0) {
@@ -107,7 +106,7 @@ class DB_Functions_Patient {
      * Check user is existed or not
      */
     public function isPatientExisted($email) {
-        $result = mysqli_query($this->mysqli,"SELECT email from per_all_people_f WHERE email = '$email' AND person_type = 'P'");
+        $result = mysqli_query("SELECT email from per_all_people_f WHERE email = '$email' AND person_type = 'P'");
         $no_of_rows = mysqli_num_rows($result);
         if ($no_of_rows > 0) {
             // user existed 
@@ -138,7 +137,9 @@ class DB_Functions_Patient {
      * returns hash string
      */
     public function checkhashSSHA($salt, $password) {
+ 
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
+ 
         return $hash;
     }
  

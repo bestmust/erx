@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.erxproject.erx.controller.MainController;
 import com.erxproject.erx.library.DatabaseHandler;
 
-public class RegisterActivity extends Activity {
+public class DoctorRegisterActivity extends Activity {
 	Button btnRegister;
 	Button btnLinkToLogin;
 	EditText inputFullName;
@@ -83,7 +83,7 @@ public class RegisterActivity extends Activity {
 							userFunction.logoutUser(getApplicationContext());
 							db.addUser(json_user.getString(KEY_NAME),
 									json_user.getString(KEY_EMAIL),
-									json_user.getString(KEY_UID),
+									json.getString(KEY_UID),
 									json_user.getString(KEY_CREATED_AT),
 									json_user.getString(KEY_PERSON_ID));
 							// Launch Dashboard Screen

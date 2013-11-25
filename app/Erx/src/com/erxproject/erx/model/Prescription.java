@@ -35,10 +35,14 @@ public class Prescription {
 		if (mPrescription == null) {
 			mPrescription = new Prescription(context);
 		}
-		// TODO check if there is already an unsaved prescription in the database for the given patient
-		// TODO if there is no unsaved prescription then create a new prescription in the database for the given patient and doctor.
-		// TODO and if there is an unsaved prescription then update the doctorId history id and date created.
-		
+		return mPrescription;
+	}
+	
+	public static Prescription getNewPrescription(Context context) {
+		if(mPrescription != null) {
+			mPrescription = null;
+		}
+		mPrescription = new Prescription(context);
 		return mPrescription;
 	}
 
