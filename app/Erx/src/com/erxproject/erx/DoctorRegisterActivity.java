@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.erxproject.erx.controller.MainController;
+import com.erxproject.erx.controller.DoctorController;
 import com.erxproject.erx.library.DatabaseHandler;
 
 public class DoctorRegisterActivity extends Activity {
@@ -34,6 +34,7 @@ public class DoctorRegisterActivity extends Activity {
 	private static String KEY_EMAIL = "email";
 	private static String KEY_CREATED_AT = "created_at";
 	private static String KEY_PERSON_ID = "person_id";
+	private static String KEY_DOCTOR_ID = "doctor_id";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class DoctorRegisterActivity extends Activity {
 				String password = inputPassword.getText().toString();
 				String address = inputAddress.getText().toString();
 				String contact = inputContact.getText().toString();
-				MainController userFunction = new MainController(
+				DoctorController userFunction = new DoctorController(
 						getApplicationContext());
 				JSONObject json = userFunction.registerUser(name, email,
 						password, address, contact);
@@ -85,7 +86,8 @@ public class DoctorRegisterActivity extends Activity {
 									json_user.getString(KEY_EMAIL),
 									json.getString(KEY_UID),
 									json_user.getString(KEY_CREATED_AT),
-									json_user.getString(KEY_PERSON_ID));
+									json_user.getString(KEY_PERSON_ID),
+									json_user.getString(KEY_DOCTOR_ID));
 							// Launch Dashboard Screen
 							Intent dashboard = new Intent(
 									getApplicationContext(),

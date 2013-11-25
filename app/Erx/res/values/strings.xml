@@ -4,11 +4,13 @@
     <string name="app_name">Erx</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="site">http://mustaqim.ignorelist.com/</string>
+    <string name="site">http://192.168.1.4</string>
     <string name="production_site">http://mustaqim.co.nf</string>
     <string name="test_site">http://mustaqim.herobo.com</string>
     <string name="local_site">http://192.168.1.4</string>
     <string name="main_extension">/android_api/index.php</string>
+    <string name="doctor_extension">/android_api/doctor.php</string>
+    <string name="debugger_extension">XDEBUG_SESSION_START=netbeans-xdebug</string>
     <string name="disease_title">Disease Diagnosed</string>
     <string name="new_prescription_title">New Prescription</string>
     <string name="register_extension">/android_api/index.php</string>

@@ -3,7 +3,7 @@ package com.erxproject.erx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.erxproject.erx.controller.MainController;
+import com.erxproject.erx.controller.DoctorController;
 import com.erxproject.erx.controller.PatientController;
 import com.erxproject.erx.library.DatabaseHandler;
 

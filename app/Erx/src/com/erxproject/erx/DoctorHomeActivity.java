@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.erxproject.erx.controller.MainController;
+import com.erxproject.erx.controller.DoctorController;
 import com.erxproject.erx.model.Doctor;
 
 public class DoctorHomeActivity extends Activity {
-	MainController mainController;
+	DoctorController doctorController;
 	Button btnLogout;
 	TextView title;
 
@@ -28,13 +28,13 @@ public class DoctorHomeActivity extends Activity {
 		 * Dashboard Screen for the application
 		 * */
 		// Check login status in database
-		mainController = new MainController(getApplicationContext());
-		if (mainController.isUserLoggedIn()) {
+		doctorController = new DoctorController(getApplicationContext());
+		if (doctorController.isUserLoggedIn()) {
 			// user already logged in show databoard
 			setContentView(R.layout.activity_doctor_home);
 			
 			//get the doctor details
-			Doctor d = mainController.getUser();
+			Doctor d = doctorController.getUser();
 			setTitle(d.getName() + "'s Home");
 			
 			btnLogout = (Button) findViewById(R.id.btnLogout);
@@ -43,7 +43,7 @@ public class DoctorHomeActivity extends Activity {
 
 				@Override
 				public void onClick(View arg0) {
-					mainController.logoutUser(getApplicationContext());
+					doctorController.logoutUser(getApplicationContext());
 					Intent login = new Intent(getApplicationContext(),
 							LoginActivity.class);
 					login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

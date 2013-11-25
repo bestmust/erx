@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.erxproject.erx.controller.MainController;
+import com.erxproject.erx.controller.DoctorController;
 import com.erxproject.erx.library.DatabaseHandler;
 import com.erxproject.erx.library.NetStatus;
 
@@ -36,6 +36,7 @@ public class LoginActivity extends Activity {
 	private static String KEY_EMAIL = "email";
 	private static String KEY_CREATED_AT = "created_at";
 	private static String KEY_PERSON_ID = "person_id";
+	private static String KEY_DOCTOR_ID = "doctor_id";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class LoginActivity extends Activity {
 			public void onClick(View view) {
 				String email = inputEmail.getText().toString();
 				String password = inputPassword.getText().toString();
-				MainController mainController = new MainController(
+				DoctorController doctorController = new DoctorController(
 						getApplicationContext());
 				Context context = getApplicationContext();
 				JSONObject json;
@@ -73,7 +74,7 @@ public class LoginActivity extends Activity {
 					return;
 				}
 
-				json = mainController.loginUser(email, password);
+				json = doctorController.loginUser(email, password);
 
 				// check for login response
 				try {
@@ -88,12 +89,13 @@ public class LoginActivity extends Activity {
 							JSONObject json_user = json.getJSONObject("user");
 
 							// Clear all previous data in database
-							mainController.logoutUser(getApplicationContext());
+							doctorController.logoutUser(getApplicationContext());
 							db.addUser(json_user.getString(KEY_NAME),
 									json_user.getString(KEY_EMAIL),
 									json.getString(KEY_UID),
 									json_user.getString(KEY_CREATED_AT),
-									json_user.getString(KEY_PERSON_ID));
+									json_user.getString(KEY_PERSON_ID),
+									json_user.getString(KEY_DOCTOR_ID));
 
 							// Launch Dashboard Screen
 							Intent dashboard = new Intent(

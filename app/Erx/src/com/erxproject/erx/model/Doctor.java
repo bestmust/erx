@@ -11,6 +11,15 @@ public class Doctor {
 	private String eMail;
 	private String uid;
 	private String createdAt;
+	private String doctorId;
+
+	public String getDoctorId() {
+		return doctorId;
+	}
+
+	public void setDoctorId(String doctorId) {
+		this.doctorId = doctorId;
+	}
 
 	private Doctor(Context context) {
 		this.mContext = context.getApplicationContext();

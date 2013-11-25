@@ -15,23 +15,23 @@ import com.erxproject.erx.model.Doctor;
 
 import android.content.Context;
 
-public class MainController {
+public class DoctorController {
 
 	private JSONParser jsonParser;
 	private Context mContext;
 	private String site;
-	private String mainExtension;
+	private String doctorExtension;
 	private String registerExtension;
 	private static String login_tag = "login"; //$NON-NLS-1$
 	private static String register_tag = "register"; //$NON-NLS-1$
 
 	// constructor
-	public MainController(Context context) {
+	public DoctorController(Context context) {
 		jsonParser = new JSONParser();
 		mContext = context.getApplicationContext();
 		site = mContext.getString(R.string.site);
-		mainExtension = mContext.getString(R.string.main_extension);
-		registerExtension = mContext.getString(R.string.register_extension);
+		doctorExtension = mContext.getString(R.string.doctor_extension);
+		registerExtension = mContext.getString(R.string.doctor_extension);
 	}
 
 	/**
@@ -60,6 +60,7 @@ public class MainController {
 			d.setPersonId(Integer.parseInt(user.get("person_id")));
 			d.setUid(user.get("uid"));
 			d.setCreatedAt(user.get("created_at"));
+			d.setDoctorId(user.get("doctor_id"));
 
 			return d;
 		} else
@@ -78,7 +79,7 @@ public class MainController {
 		params.add(new BasicNameValuePair("tag", login_tag)); //$NON-NLS-1$
 		params.add(new BasicNameValuePair("email", email)); //$NON-NLS-1$
 		params.add(new BasicNameValuePair("password", password)); //$NON-NLS-1$
-		JSONObject json = jsonParser.getJSONFromUrl(site + mainExtension,
+		JSONObject json = jsonParser.getJSONFromUrl(site + doctorExtension,
 				params);
 		// Log.e("JSON", json.toString());
 		return json;

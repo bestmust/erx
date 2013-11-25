@@ -27,6 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_UID = "uid";
 	private static final String KEY_CREATED_AT = "created_at";
 	private static final String KEY_PERSON_ID = "person_id";
+	private static final String KEY_DOCTOR_ID = "doctor_id";
 
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,7 +36,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	/**
 	 * Storing user details in database
 	 * */
-	public void addUser(String name, String email, String uid, String created_at, String person_id) {
+	public void addUser(String name, String email, String uid, String created_at, String person_id, String doctor_id) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
@@ -44,6 +45,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_UID, uid); // Email
 		values.put(KEY_CREATED_AT, created_at); // Created At
 		values.put(KEY_PERSON_ID, person_id);
+		values.put(KEY_DOCTOR_ID, doctor_id);
 
 		// Inserting Row
 		db.insert(TABLE_LOGIN, null, values);
@@ -82,6 +84,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			user.put("uid", cursor.getString(3));
 			user.put("created_at", cursor.getString(4));
 			user.put("person_id", cursor.getString(5));
+			user.put("doctor_id", cursor.getString(6));
 		}
 		cursor.close();
 		db.close();
@@ -96,7 +99,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
 				+ KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
 				+ KEY_CREATED_AT + " TEXT,"  
-				+ KEY_PERSON_ID + " TEXT" + ")";
+				+ KEY_PERSON_ID + " TEXT,"
+				+ KEY_DOCTOR_ID + " TEXT)";
 		db.execSQL(CREATE_LOGIN_TABLE);
 	}
 

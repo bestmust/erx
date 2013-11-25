@@ -23,6 +23,7 @@ public class PatientController {
 	//private static String patientURL = Messages.getString("UserFunctions.site") + Messages.getString("UserFunctions.patient_extn"); //$NON-NLS-1$
 	private String site;
 	private String patientExtension;
+	private String debuggerExtension;
 	private static String login_tag = "login"; //$NON-NLS-1$
 	private static String register_tag = "register"; //$NON-NLS-1$
 
@@ -32,6 +33,7 @@ public class PatientController {
 		mContext = context.getApplicationContext();
 		site = mContext.getString(R.string.site);
 		patientExtension = mContext.getString(R.string.patient_extension);
+		debuggerExtension = mContext.getString(R.string.debugger_extension);
 	}
 
 	public JSONObject registerPatient(String name, String email,
@@ -46,7 +48,7 @@ public class PatientController {
 		params.add(new BasicNameValuePair("telephone", contact)); //$NON-NLS-1$
 
 		// getting JSON Object
-		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension,
+		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension +"?"+ debuggerExtension,
 				params);
 		// return json
 		return json;
@@ -59,7 +61,7 @@ public class PatientController {
 		params.add(new BasicNameValuePair("tag", login_tag));
 		params.add(new BasicNameValuePair("email", email));
 
-		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension,
+		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension+"?"+ debuggerExtension,
 				params);
 
 		return json;
