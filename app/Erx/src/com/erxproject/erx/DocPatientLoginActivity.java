@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import com.erxproject.erx.controller.PatientController;
 import com.erxproject.erx.library.DatabaseHandler;
+import com.erxproject.erx.model.Patient;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -54,6 +55,8 @@ public class DocPatientLoginActivity extends Activity {
 				if (Integer.parseInt(res) == 1) {
 					
 					//TODO create new Patient() here from the given json
+					Patient p = Patient.getNewPatient(getApplicationContext());
+					p.getPatientFromJSON(json);
 
 					Intent intent = new Intent(this, DocPatientHomeActivity.class);
 					startActivity(intent);

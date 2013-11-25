@@ -2,6 +2,8 @@ package com.erxproject.erx;
 
 import java.util.ArrayList;
 
+import com.erxproject.erx.model.Doctor;
+import com.erxproject.erx.model.Patient;
 import com.erxproject.erx.model.Prescription;
 import com.erxproject.erx.model.prescription.Symptom;
 
@@ -17,6 +19,8 @@ import android.widget.EditText;
 public class DocPatientHomeFragment extends Fragment {
 	
 	Button btnPrescription;
+	Patient patient;
+	Doctor doctor;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,9 @@ public class DocPatientHomeFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_doc_patient, parent,
 				false);
+		doctor = Doctor.get(getActivity());
+		patient = Patient.get(getActivity());
+		getActivity().setTitle("Patient: " + patient.getName());
 		
 		btnPrescription = (Button) v.findViewById(R.id.btnDPHomePrescription);		
 

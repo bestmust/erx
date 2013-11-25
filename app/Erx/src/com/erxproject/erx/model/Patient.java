@@ -1,5 +1,10 @@
 package com.erxproject.erx.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.erxproject.erx.R;
+
 import android.content.Context;
 
 public class Patient {
@@ -22,6 +27,28 @@ public class Patient {
 		}
 		return sPatient;
 	}
+	
+	public static Patient getNewPatient(Context context) {
+		if(sPatient != null) {
+			sPatient = null;
+			System.gc();
+		}
+		sPatient = new Patient(context);
+		return sPatient;
+	}
+	
+	public Patient getPatientFromJSON(JSONObject json) throws JSONException {
+		
+		JSONObject json_user = json.getJSONObject("user");
+
+		name = json_user.getString(mContext.getString(R.string.key_name));
+		eMail = json_user.getString(mContext.getString(R.string.key_email));
+		personId = Integer.parseInt(json_user.getString(mContext.getString(R.string.key_person_id)));
+		uid = json.getString(mContext.getString(R.string.key_uid));
+		createdAt = json_user.getString(mContext.getString(R.string.key_created_at));
+
+		return sPatient;
+}
 
 	public void setName(String name) {
 		this.name = name;

@@ -64,19 +64,5 @@ public class PatientController {
 
 		return json;
 	}
-	
-	public Patient getPatient(JSONObject json) throws JSONException {
-			
-			JSONObject json_user = json.getJSONObject("user");
-			
-			Patient d = Patient.get(mContext);
-			d.setName(json_user.getString(mContext.getString(R.string.key_name)));
-			d.seteMail(json_user.getString(mContext.getString(R.string.key_email)));
-			d.setPersonId(Integer.parseInt(json_user.getString(mContext.getString(R.string.key_person_id))));
-			d.setUid(json.getString(mContext.getString(R.string.key_uid)));
-			d.setCreatedAt(json_user.getString(mContext.getString(R.string.key_created_at)));
-
-			return d;
-	}
 
 }
