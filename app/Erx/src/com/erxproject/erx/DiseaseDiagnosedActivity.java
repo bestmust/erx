@@ -15,7 +15,5 @@ public class DiseaseDiagnosedActivity extends Activity {
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
 		setTitle(R.string.disease_title);
-
 	}
-
 }

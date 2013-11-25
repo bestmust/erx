@@ -1,6 +1,7 @@
 package com.erxproject.erx.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -10,6 +11,7 @@ import org.json.JSONObject;
 import com.erxproject.erx.R;
 import com.erxproject.erx.library.DatabaseHandler;
 import com.erxproject.erx.library.JSONParser;
+import com.erxproject.erx.model.Doctor;
 
 import android.content.Context;
 
@@ -43,6 +45,25 @@ public class MainController {
 			return true;
 		}
 		return false;
+	}
+	
+	public Doctor getUser() {
+		
+		if (isUserLoggedIn()) {
+			
+			Doctor d = Doctor.get(mContext);
+			HashMap<String, String> user = new HashMap<String, String>();
+			DatabaseHandler db = new DatabaseHandler(mContext);
+			user = db.getUserDetails();
+			d.setName(user.get("name"));
+			d.seteMail(user.get("email"));
+			d.setPersonId(Integer.parseInt(user.get("person_id")));
+			d.setUid(user.get("uid"));
+			d.setCreatedAt(user.get("created_at"));
+
+			return d;
+		} else
+			return null;
 	}
 
 	/**

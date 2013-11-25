@@ -1,16 +1,21 @@
 package com.erxproject.erx.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
 
 import com.erxproject.erx.R;
+import com.erxproject.erx.library.DatabaseHandler;
 import com.erxproject.erx.library.JSONParser;
+import com.erxproject.erx.model.Doctor;
+import com.erxproject.erx.model.Patient;
 
 public class PatientController {
 	private JSONParser jsonParser;
@@ -58,6 +63,20 @@ public class PatientController {
 				params);
 
 		return json;
+	}
+	
+	public Patient getPatient(JSONObject json) throws JSONException {
+			
+			JSONObject json_user = json.getJSONObject("user");
+			
+			Patient d = Patient.get(mContext);
+			d.setName(json_user.getString(mContext.getString(R.string.key_name)));
+			d.seteMail(json_user.getString(mContext.getString(R.string.key_email)));
+			d.setPersonId(Integer.parseInt(json_user.getString(mContext.getString(R.string.key_person_id))));
+			d.setUid(json.getString(mContext.getString(R.string.key_uid)));
+			d.setCreatedAt(json_user.getString(mContext.getString(R.string.key_created_at)));
+
+			return d;
 	}
 
 }

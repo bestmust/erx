@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.erxproject.erx.controller.MainController;
+import com.erxproject.erx.model.Doctor;
 
 public class DoctorHomeActivity extends Activity {
 	MainController mainController;
@@ -31,13 +32,17 @@ public class DoctorHomeActivity extends Activity {
 		if (mainController.isUserLoggedIn()) {
 			// user already logged in show databoard
 			setContentView(R.layout.activity_doctor_home);
+			
+			//get the doctor details
+			Doctor d = mainController.getUser();
+			setTitle(d.getName() + "'s Home");
+			
 			btnLogout = (Button) findViewById(R.id.btnLogout);
 
 			btnLogout.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
-					// TODO Auto-generated method stub
 					mainController.logoutUser(getApplicationContext());
 					Intent login = new Intent(getApplicationContext(),
 							LoginActivity.class);

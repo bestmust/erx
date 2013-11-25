@@ -5,14 +5,14 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/symptomNumberTextView"
+        android:id="@+id/parameterNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title" 
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/symptomTitleTextView"
+        android:id="@+id/parameterValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Parameter" 

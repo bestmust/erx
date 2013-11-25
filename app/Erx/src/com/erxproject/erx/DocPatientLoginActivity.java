@@ -52,6 +52,8 @@ public class DocPatientLoginActivity extends Activity {
 				loginErrorMsg.setText("");
 				String res = json.getString(KEY_SUCCESS);
 				if (Integer.parseInt(res) == 1) {
+					
+					//TODO create new Patient() here from the given json
 
 					Intent intent = new Intent(this, DocPatientHomeActivity.class);
 					startActivity(intent);

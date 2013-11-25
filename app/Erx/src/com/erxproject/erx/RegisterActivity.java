@@ -33,6 +33,7 @@ public class RegisterActivity extends Activity {
 	private static String KEY_NAME = "name";
 	private static String KEY_EMAIL = "email";
 	private static String KEY_CREATED_AT = "created_at";
+	private static String KEY_PERSON_ID = "person_id";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -82,8 +83,9 @@ public class RegisterActivity extends Activity {
 							userFunction.logoutUser(getApplicationContext());
 							db.addUser(json_user.getString(KEY_NAME),
 									json_user.getString(KEY_EMAIL),
-									json.getString(KEY_UID),
-									json_user.getString(KEY_CREATED_AT));
+									json_user.getString(KEY_UID),
+									json_user.getString(KEY_CREATED_AT),
+									json_user.getString(KEY_PERSON_ID));
 							// Launch Dashboard Screen
 							Intent dashboard = new Intent(
 									getApplicationContext(),
