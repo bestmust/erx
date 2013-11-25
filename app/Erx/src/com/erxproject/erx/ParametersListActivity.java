@@ -9,12 +9,12 @@ import android.widget.Button;
 public class ParametersListActivity extends SingleFragmentActivityWithAdd {
 
 	Button addButton;
-	
+
 	@Override
 	protected Fragment createFragment() {
 		return new ParametersListFragment();
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

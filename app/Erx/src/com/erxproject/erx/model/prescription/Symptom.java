@@ -5,7 +5,7 @@ public class Symptom {
 	private String mDetails;
 	private int mSymptomId;
 	private int mHistoryId;
-	
+
 	public String getName() {
 		return mName;
 	}

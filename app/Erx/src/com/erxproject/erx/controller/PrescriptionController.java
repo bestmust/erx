@@ -6,7 +6,7 @@ import com.erxproject.erx.library.JSONParser;
 import android.content.Context;
 
 public class PrescriptionController {
-	
+
 	Context mContext;
 	JSONParser jsonParser;
 	String site;
@@ -16,7 +16,8 @@ public class PrescriptionController {
 		mContext = applicationContext.getApplicationContext();
 		jsonParser = new JSONParser();
 		site = mContext.getString(R.string.site);
-		prescriptionExtension = mContext.getString(R.string.prescription_extension);
+		prescriptionExtension = mContext
+				.getString(R.string.prescription_extension);
 	}
 
 }

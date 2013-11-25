@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class PrescriptionActivity extends Activity {
-	
+
 	Prescription prescription;
 	Patient patient;
 	Doctor doctor;
@@ -23,13 +23,14 @@ public class PrescriptionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_prescription);
 		setTitle(R.string.new_prescription_title);
-		
+
 		patient = Patient.get(getApplicationContext());
 		doctor = Doctor.get(getApplicationContext());
 		prescription = Prescription.getNewPrescription(getApplicationContext());
-		
-		PrescriptionController pc = new PrescriptionController(getApplicationContext());
-		
+
+		PrescriptionController pc = new PrescriptionController(
+				getApplicationContext());
+
 	}
 
 	public void openDiseaseDiagnosed(View view) {

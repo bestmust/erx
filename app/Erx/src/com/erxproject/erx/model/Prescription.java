@@ -28,7 +28,6 @@ public class Prescription {
 			s.setName("symptom " + i);
 			mSymptoms.add(s);
 		}
-
 	}
 
 	public static Prescription get(Context context) {
@@ -37,9 +36,9 @@ public class Prescription {
 		}
 		return mPrescription;
 	}
-	
+
 	public static Prescription getNewPrescription(Context context) {
-		if(mPrescription != null) {
+		if (mPrescription != null) {
 			mPrescription = null;
 		}
 		mPrescription = new Prescription(context);

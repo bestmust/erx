@@ -32,11 +32,11 @@ public class DoctorHomeActivity extends Activity {
 		if (doctorController.isUserLoggedIn()) {
 			// user already logged in show databoard
 			setContentView(R.layout.activity_doctor_home);
-			
-			//get the doctor details
+
+			// get the doctor details
 			Doctor d = doctorController.getUser();
 			setTitle(d.getName() + "'s Home");
-			
+
 			btnLogout = (Button) findViewById(R.id.btnLogout);
 
 			btnLogout.setOnClickListener(new View.OnClickListener() {

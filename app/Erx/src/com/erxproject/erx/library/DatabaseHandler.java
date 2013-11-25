@@ -36,7 +36,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	/**
 	 * Storing user details in database
 	 * */
-	public void addUser(String name, String email, String uid, String created_at, String person_id, String doctor_id) {
+	public void addUser(String name, String email, String uid,
+			String created_at, String person_id, String doctor_id) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
@@ -98,8 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_LOGIN + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
 				+ KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
-				+ KEY_CREATED_AT + " TEXT,"  
-				+ KEY_PERSON_ID + " TEXT,"
+				+ KEY_CREATED_AT + " TEXT," + KEY_PERSON_ID + " TEXT,"
 				+ KEY_DOCTOR_ID + " TEXT)";
 		db.execSQL(CREATE_LOGIN_TABLE);
 	}

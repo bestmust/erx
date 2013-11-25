@@ -48,8 +48,8 @@ public class PatientController {
 		params.add(new BasicNameValuePair("telephone", contact)); //$NON-NLS-1$
 
 		// getting JSON Object
-		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension +"?"+ debuggerExtension,
-				params);
+		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension
+				+ "?" + debuggerExtension, params);
 		// return json
 		return json;
 	}
@@ -61,8 +61,8 @@ public class PatientController {
 		params.add(new BasicNameValuePair("tag", login_tag));
 		params.add(new BasicNameValuePair("email", email));
 
-		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension+"?"+ debuggerExtension,
-				params);
+		JSONObject json = jsonParser.getJSONFromUrl(site + patientExtension
+				+ "?" + debuggerExtension, params);
 
 		return json;
 	}

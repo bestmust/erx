@@ -46,11 +46,11 @@ public class DoctorController {
 		}
 		return false;
 	}
-	
+
 	public Doctor getUser() {
-		
+
 		if (isUserLoggedIn()) {
-			
+
 			Doctor d = Doctor.get(mContext);
 			HashMap<String, String> user = new HashMap<String, String>();
 			DatabaseHandler db = new DatabaseHandler(mContext);

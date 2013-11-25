@@ -22,7 +22,7 @@ public class DiseaseDiagnosedListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//getActivity().setTitle(R.string.symptoms_title);
+		// getActivity().setTitle(R.string.symptoms_title);
 		tempPrescription = Prescription.get(getActivity());
 		mDiseases = tempPrescription.getDisease();
 
@@ -52,13 +52,13 @@ public class DiseaseDiagnosedListFragment extends ListFragment {
 			}
 
 			Disease d = getItem(position);
-//
-//			TextView symptomNumberTextView = (TextView) convertView
-//					.findViewById(R.id.symptomNumberTextView);
-//			TextView symptomTitleTextView = (TextView) convertView
-//					.findViewById(R.id.symptomTitleTextView);
-//			symptomNumberTextView.setText("" + position + " ");
-//			symptomTitleTextView.setText(s.getName());
+			//
+			// TextView symptomNumberTextView = (TextView) convertView
+			// .findViewById(R.id.symptomNumberTextView);
+			// TextView symptomTitleTextView = (TextView) convertView
+			// .findViewById(R.id.symptomTitleTextView);
+			// symptomNumberTextView.setText("" + position + " ");
+			// symptomTitleTextView.setText(s.getName());
 
 			return convertView;
 		}

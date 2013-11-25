@@ -21,8 +21,6 @@ import android.os.StrictMode;
 import android.util.Log;
 
 public class JSONParser {
-	
-	
 
 	static InputStream is = null;
 	static JSONObject jObj = null;
@@ -31,8 +29,10 @@ public class JSONParser {
 	// constructor
 	public JSONParser() {
 
-		// TODO:remove the following lines and implement this class using AsyncTask to avoid the android.os.NetworkOnMainThreadException
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		// TODO:remove the following lines and implement this class using
+		// AsyncTask to avoid the android.os.NetworkOnMainThreadException
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 
 	}

@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class ParametersListFragment extends ListFragment {
-	
+
 	private ArrayList<Parameter> mParameters;
 	private Prescription tempPrescription;
 

@@ -89,7 +89,8 @@ public class LoginActivity extends Activity {
 							JSONObject json_user = json.getJSONObject("user");
 
 							// Clear all previous data in database
-							doctorController.logoutUser(getApplicationContext());
+							doctorController
+									.logoutUser(getApplicationContext());
 							db.addUser(json_user.getString(KEY_NAME),
 									json_user.getString(KEY_EMAIL),
 									json.getString(KEY_UID),

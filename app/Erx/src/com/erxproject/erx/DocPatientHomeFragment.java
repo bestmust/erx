@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class DocPatientHomeFragment extends Fragment {
-	
+
 	Button btnPrescription;
 	Patient patient;
 	Doctor doctor;
@@ -30,25 +30,25 @@ public class DocPatientHomeFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_doc_patient, parent,
-				false);
+		View v = inflater.inflate(R.layout.fragment_doc_patient, parent, false);
 		doctor = Doctor.get(getActivity());
 		patient = Patient.get(getActivity());
 		getActivity().setTitle("Patient: " + patient.getName());
-		
-		btnPrescription = (Button) v.findViewById(R.id.btnDPHomePrescription);		
+
+		btnPrescription = (Button) v.findViewById(R.id.btnDPHomePrescription);
 
 		btnPrescription.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-			
-			Intent intent = new Intent(getActivity(), PrescriptionActivity.class);
-					startActivity(intent);
-				
+
+				Intent intent = new Intent(getActivity(),
+						PrescriptionActivity.class);
+				startActivity(intent);
+
 			}
 		});
-		
+
 		return v;
 	}
 

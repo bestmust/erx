@@ -9,13 +9,13 @@ import android.widget.Button;
 public class DiseaseDiagnosedListActivity extends SingleFragmentActivityWithAdd {
 
 	Button addButton;
-	
+
 	@Override
 	protected Fragment createFragment() {
 		// TODO Auto-generated method stub
 		return new DiseaseDiagnosedListFragment();
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

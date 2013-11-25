@@ -46,7 +46,8 @@ public class PatientRegisterFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_patient_register, parent, false);
+		View v = inflater.inflate(R.layout.fragment_patient_register, parent,
+				false);
 
 		// Importing all assets like buttons, text fields
 		inputFullName = (EditText) v.findViewById(R.id.registerName);
