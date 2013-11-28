@@ -27,6 +27,11 @@
     <string name="key_created_at">created_at</string>
     <string name="key_person_id">person_id</string>
     <string name="key_patient_id">patient_id</string>
+    <string name="key_doctor_id">doctor_id</string>
+    <string name="key_history_id">history_id</string>
+    <string name="key_date_modified">date_modified</string>
     <string name="tag_get_patient_history">get_patient_history</string>
+    <string name="tag_check_unsaved_prescription">check_unsaved_prescription</string>
+    <string name="tag_create_new_prescription">create_new_prescription</string>
 
 </resources>

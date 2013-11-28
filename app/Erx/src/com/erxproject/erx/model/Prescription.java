@@ -2,13 +2,18 @@ package com.erxproject.erx.model;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
+
+import com.erxproject.erx.R;
 import com.erxproject.erx.model.prescription.*;
 
 public class Prescription {
 
 	private int patientId;
-	private int dictorId;
+	private int doctorId;
 	private int historyId;
 	private String dateCreated;
 	private Context mContext;
@@ -45,6 +50,13 @@ public class Prescription {
 		return mPrescription;
 	}
 
+	public void getPrescriptionFromJSON(JSONObject json) throws NumberFormatException, JSONException {
+		patientId = Integer.parseInt(json.getString(mContext.getString(R.string.key_patient_id)));
+		doctorId = Integer.parseInt(json.getString(mContext.getString(R.string.key_doctor_id)));
+		historyId = Integer.parseInt(json.getString(mContext.getString(R.string.key_history_id)));
+		dateCreated = json.getString(mContext.getString(R.string.key_date_modified));
+	}
+	
 	public ArrayList<Symptom> getSymptoms() {
 		return mSymptoms;
 	}

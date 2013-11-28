@@ -1,5 +1,7 @@
 package com.erxproject.erx;
 
+import org.json.JSONException;
+
 import com.erxproject.erx.controller.PrescriptionController;
 import com.erxproject.erx.model.Doctor;
 import com.erxproject.erx.model.Patient;
@@ -26,10 +28,20 @@ public class PrescriptionActivity extends Activity {
 
 		patient = Patient.get(getApplicationContext());
 		doctor = Doctor.get(getApplicationContext());
-		prescription = Prescription.getNewPrescription(getApplicationContext());
+		//prescription = Prescription.getNewPrescription(getApplicationContext());
 
 		PrescriptionController pc = new PrescriptionController(
 				getApplicationContext());
+		
+		try {
+			prescription = pc.getUnsavedPrescription(patient.getPatientId(),patient.getPersonId(),doctor.getDoctorId());
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

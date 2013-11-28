@@ -41,7 +41,44 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             echo json_encode($response);
         }
          
-    } else {
+    } else if ($tag == 'check_unsaved_prescription') {
+        
+        $patientId = $_POST['patient_id'];
+        $doctorId = $_POST['doctor_id'];
+        
+        $unsavedPrescription = $dbFunctionsPrescription->checkUnsavedPrescription($patientId,$doctorId);
+        
+        if($unsavedPrescription != false) {
+            
+            $response["success"] = 1;
+            $response["unsaved_prescription"] = $unsavedPrescription;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in retrieving unsaved prescription.";
+            echo json_encode($response);
+        }
+        
+    } else if ($tag == 'create_new_prescription') {
+        $patientId = $_POST['patient_id'];
+        $doctorId = $_POST['doctor_id'];
+        $personId = $_POST['person_id'];
+        
+        $newUnsavedPrescription = $dbFunctionsPrescription->createNewPrescription($patientId,$personId, $doctorId);
+        
+        if($newUnsavedPrescription != false) {
+            
+            $response["success"] = 1;
+            $response["new_prescription"] = $newUnsavedPrescription;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in creating new prescription.";
+            echo json_encode($response);
+        }
+    }
+    
+    else {
         print "Access Denied";
     }
 } else {

@@ -21,7 +21,6 @@ public class PrescriptionListItem {
 			this.saved = true;
 		} else if (saved == "N") {
 			this.saved = false;
-
 		}
 
 	}
