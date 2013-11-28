@@ -40,6 +40,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             //$response["user"]["created_at"] = $user["created_at"];
             //$response["user"]["updated_at"] = $user["updated_at"];
             $response["user"]["person_id"] = $user["person_id"];
+            $response["user"]["patient_id"] = $user["patient_id"];
             echo json_encode($response);
         } else {
             // user not found

@@ -15,6 +15,7 @@
     <string name="new_prescription_title">New Prescription</string>
     <string name="register_extension">/android_api/index.php</string>
     <string name="patient_extension">/android_api/patient.php</string>
+    <string name="prescription_extension">/android_api/prescription.php</string>
     <string name="docpatientlogin_title">Patient Login</string>
     <string name="symptoms_title">Symptoms</string>
     <string name="key_success">success</string>
@@ -25,6 +26,7 @@
     <string name="key_email">email</string>
     <string name="key_created_at">created_at</string>
     <string name="key_person_id">person_id</string>
-    <string name="prescription_extension">/android_api/prescription.php</string>
+    <string name="key_patient_id">patient_id</string>
+    <string name="tag_get_patient_history">get_patient_history</string>
 
 </resources>

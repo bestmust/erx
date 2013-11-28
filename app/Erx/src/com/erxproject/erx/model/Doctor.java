@@ -11,14 +11,14 @@ public class Doctor {
 	private String eMail;
 	private String uid;
 	private String createdAt;
-	private String doctorId;
+	private int doctorId;
 
-	public String getDoctorId() {
+	public int getDoctorId() {
 		return doctorId;
 	}
 
 	public void setDoctorId(String doctorId) {
-		this.doctorId = doctorId;
+		this.doctorId = Integer.parseInt(doctorId);
 	}
 
 	private Doctor(Context context) {

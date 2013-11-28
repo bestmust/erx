@@ -46,9 +46,7 @@ public class Patient {
 		eMail = json_user.getString(mContext.getString(R.string.key_email));
 		personId = Integer.parseInt(json_user.getString(mContext
 				.getString(R.string.key_person_id)));
-		// uid = json.getString(mContext.getString(R.string.key_uid));
-		// createdAt =
-		// json_user.getString(mContext.getString(R.string.key_created_at));
+		patientId = Integer.parseInt(json_user.getString(mContext.getString(R.string.key_patient_id)));
 
 		return sPatient;
 	}
@@ -91,6 +89,10 @@ public class Patient {
 
 	public String getName() {
 		return name;
+	}
+
+	public int getPatientId() {
+		return patientId;
 	}
 
 }

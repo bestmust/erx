@@ -32,7 +32,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
         $user = $db->getUserByEmailAndPassword($email, $password);
         if ($user != false) {
             // user found
-            // echo json with success = 1
+
             $response["success"] = 1;
             $response["uid"] = $user["unique_id"];
             $response["user"]["name"] = $user["name"];

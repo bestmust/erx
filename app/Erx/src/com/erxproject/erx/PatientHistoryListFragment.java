@@ -8,7 +8,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.erxproject.erx.controller.PrescriptionController;
 import com.erxproject.erx.library.JSONParser;
+import com.erxproject.erx.model.Doctor;
+import com.erxproject.erx.model.Patient;
 import com.erxproject.erx.model.PrescriptionListItem;
 
 import android.content.Context;
@@ -22,54 +25,27 @@ import android.widget.TextView;
 public class PatientHistoryListFragment extends ListFragment {
 
 	private ArrayList<PrescriptionListItem> prescriptions;
+	private PrescriptionController prescriptionController;
+	private Patient patient;
+	private Doctor doctor;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
+		patient = Patient.get(getActivity());
+		doctor = Doctor.get(getActivity());
+		prescriptionController = new PrescriptionController(getActivity());
+		
 		try {
-			prescriptions = refreshPatientHistoryFromServer();
+			prescriptions = prescriptionController.getPatientHistory(patient.getPatientId(),doctor.getDoctorId());
 		} catch (JSONException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		PrescriptionAdapter adapter = new PrescriptionAdapter(prescriptions);
 		setListAdapter(adapter);
-	}
-
-	private ArrayList<PrescriptionListItem> refreshPatientHistoryFromServer()
-			throws JSONException {
-		JSONParser jsonParser = new JSONParser();
-		JSONObject json;
-		JSONArray jsonPrescriptionList;
-		JSONObject jsonPrescription;
-		ArrayList<PrescriptionListItem> prescriptionList;
-		PrescriptionListItem tempPrescriptionListItem;
-		int length = 1;
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
-
-		// TODO change the URL to get the history and also add the parameters.
-
-		json = jsonParser.getJSONFromUrl(
-				"http://192.168.1.4/android_api/test/json_array_test.php",
-				params);
-		jsonPrescriptionList = json.getJSONArray("patient_history");
-		length = jsonPrescriptionList.length();
-
-		prescriptionList = new ArrayList<PrescriptionListItem>();
-
-		for (int i = 0; i < length; i++) {
-			jsonPrescription = jsonPrescriptionList.getJSONObject(i);
-			tempPrescriptionListItem = new PrescriptionListItem(
-					jsonPrescription.getInt("patient_id"),
-					jsonPrescription.getInt("person_id"),
-					jsonPrescription.getInt("doctor_id"),
-					jsonPrescription.getInt("history_id"),
-					jsonPrescription.getString("date_modified"),
-					jsonPrescription.getString("saved"));
-			prescriptionList.add(tempPrescriptionListItem);
-		}
-		return prescriptionList;
 	}
 
 	private class PrescriptionAdapter extends

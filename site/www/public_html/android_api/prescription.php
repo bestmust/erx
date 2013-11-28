@@ -14,7 +14,6 @@
 if (isset($_POST['tag']) && $_POST['tag'] != '') {
     // get tag
     $tag = $_POST['tag'];
-    $object = $_POST['object'];
 
     // include db handler
     require_once 'include/DB_Functions_Prescription.php';
@@ -24,17 +23,26 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     $response = array("tag" => $tag, "success" => 0, "error" => 0);
 
     // check for tag type
-    if ($tag == 'select') {
-        if ($object == 'prescription_saved') {
-            $doctorId = $_POST['doctor_id'];
-            $dbFunctionsPrescription->getSavedPrescription();
+    if ($tag == 'get_patient_history') {
+        
+        $patientId = $_POST['patient_id'];
+        $doctorId = $_POST['doctor_id'];
+        
+        $patientHistoryList = $dbFunctionsPrescription->getPatientHistory($patientId,$doctorId);
+        
+        if($patientHistoryList != false) {
+            
+            $response["success"] = 1;
+            $response["patient_history"] = $patientHistoryList;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in retrieving patient history.";
+            echo json_encode($response);
         }
-    } else if ($tag == 'insert') {
-        
-    } else if ($tag == 'update') {
-        
-    } else if ($tag == 'delete') {
-        
+         
+    } else {
+        print "Access Denied";
     }
 } else {
     echo 'Access Denied!';
