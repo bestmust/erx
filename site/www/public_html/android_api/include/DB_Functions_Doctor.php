@@ -44,9 +44,15 @@ class DB_Functions_Doctor {
             if ($resultU && $resultDoctor && $resultAddress && $doctorIdUpdate) {
                 // get user details 
                 //$uid = mysqli_insert_id($this->mysqli); // last inserted id
-                $result = mysqli_query($this->mysqli, "SELECT * FROM users WHERE person_id = $personId");
+                $result = mysqli_query($this->mysqli, "SELECT * FROM per_all_people_f WHERE person_id = $personId");
+                $resultU = mysqli_query($this->mysqli, "SELECT * FROM users WHERE person_id = $personId");
                 // return user details
-                return mysqli_fetch_array($result);
+                $result = mysqli_fetch_array($result);
+                $resultU = mysqli_fetch_array($resultU); 
+                $result['unique_id'] = $uuid;
+                $result['created_at'] = $resultU['created_at'];
+                $result['updated_at'] = $resultU['updated_at'];
+                return $result;
             } else {
                 return false;
             }

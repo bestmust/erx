@@ -46,7 +46,8 @@ public class Patient {
 		eMail = json_user.getString(mContext.getString(R.string.key_email));
 		personId = Integer.parseInt(json_user.getString(mContext
 				.getString(R.string.key_person_id)));
-		patientId = Integer.parseInt(json_user.getString(mContext.getString(R.string.key_patient_id)));
+		patientId = Integer.parseInt(json_user.getString(mContext
+				.getString(R.string.key_patient_id)));
 
 		return sPatient;
 	}

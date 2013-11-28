@@ -104,15 +104,35 @@ public class PrescriptionController {
 				jsonNewPrescription = json.getJSONObject("new_prescription");
 				p.getPrescriptionFromJSON(jsonNewPrescription);
 			} else if (Integer.parseInt(json.getString("error")) == 1) {
-				
+
 				Toast t = Toast.makeText(mContext,
-						"Error is creating new prescription", Toast.LENGTH_SHORT);
+						"Error is creating new prescription",
+						Toast.LENGTH_SHORT);
 				t.show();
 
 			}
 		}
 
 		return p;
+	}
+	
+	public boolean savePrescription(int historyId) throws NumberFormatException, JSONException {
+		
+		JSONObject json;
+		
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_save_prescription)));
+		params.add(new BasicNameValuePair("history_id", "" + historyId));
+
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension + "?"
+				+ debuggerExtension, params);
+		if (Integer.parseInt(json.getString("success")) == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 }

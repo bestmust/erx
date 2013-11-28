@@ -32,13 +32,14 @@ public class PatientHistoryListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		patient = Patient.get(getActivity());
 		doctor = Doctor.get(getActivity());
 		prescriptionController = new PrescriptionController(getActivity());
-		
+
 		try {
-			prescriptions = prescriptionController.getPatientHistory(patient.getPatientId(),doctor.getDoctorId());
+			prescriptions = prescriptionController.getPatientHistory(
+					patient.getPatientId(), doctor.getDoctorId());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

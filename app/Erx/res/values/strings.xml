@@ -33,5 +33,6 @@
     <string name="tag_get_patient_history">get_patient_history</string>
     <string name="tag_check_unsaved_prescription">check_unsaved_prescription</string>
     <string name="tag_create_new_prescription">create_new_prescription</string>
+    <string name="tag_save_prescription">save_prescription</string>
 
 </resources>

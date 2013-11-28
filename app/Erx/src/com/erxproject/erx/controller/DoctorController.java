@@ -113,7 +113,7 @@ public class DoctorController {
 		params.add(new BasicNameValuePair("contact", contact)); //$NON-NLS-1$
 
 		// getting JSON Object
-		JSONObject json = jsonParser.getJSONFromUrl(site + registerExtension,
+		JSONObject json = jsonParser.getJSONFromUrl(site + doctorExtension,
 				params);
 		// return json
 		return json;

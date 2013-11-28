@@ -17,6 +17,7 @@ import android.widget.Toast;
 public class PrescriptionActivity extends Activity {
 
 	Prescription prescription;
+	PrescriptionController pc;
 	Patient patient;
 	Doctor doctor;
 
@@ -28,13 +29,15 @@ public class PrescriptionActivity extends Activity {
 
 		patient = Patient.get(getApplicationContext());
 		doctor = Doctor.get(getApplicationContext());
-		//prescription = Prescription.getNewPrescription(getApplicationContext());
+		// prescription =
+		// Prescription.getNewPrescription(getApplicationContext());
 
-		PrescriptionController pc = new PrescriptionController(
+		pc = new PrescriptionController(
 				getApplicationContext());
-		
+
 		try {
-			prescription = pc.getUnsavedPrescription(patient.getPatientId(),patient.getPersonId(),doctor.getDoctorId());
+			prescription = pc.getUnsavedPrescription(patient.getPatientId(),
+					patient.getPersonId(), doctor.getDoctorId());
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,9 +69,20 @@ public class PrescriptionActivity extends Activity {
 		startActivity(intent);
 	}
 
-	public void savePrescription(View view) {
+	public void savePrescription(View view) throws NumberFormatException, JSONException {
 		Context context = getApplicationContext();
-		CharSequence text = "Prescription Saved.";
+		
+		boolean isSaved;
+		
+		isSaved = pc.savePrescription(prescription.getHistoryId());
+		CharSequence text;
+		if(isSaved) {
+			text = "Prescription Saved.";
+		}
+		else {
+			text = "Error in saving Prescription";
+		}
+			
 		int duration = Toast.LENGTH_SHORT;
 
 		Toast toast = Toast.makeText(context, text, duration);

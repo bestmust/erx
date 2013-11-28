@@ -75,6 +75,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
                 $response["user"]["person_id"] = $user["person_id"];
                 $response["user"]["created_at"] = $user["created_at"];
                 $response["user"]["updated_at"] = $user["updated_at"];
+                $response["user"]["doctor_id"] = $user["doctor_id"];
                 echo json_encode($response);
             } else {
                 // user failed to store

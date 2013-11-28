@@ -50,13 +50,18 @@ public class Prescription {
 		return mPrescription;
 	}
 
-	public void getPrescriptionFromJSON(JSONObject json) throws NumberFormatException, JSONException {
-		patientId = Integer.parseInt(json.getString(mContext.getString(R.string.key_patient_id)));
-		doctorId = Integer.parseInt(json.getString(mContext.getString(R.string.key_doctor_id)));
-		historyId = Integer.parseInt(json.getString(mContext.getString(R.string.key_history_id)));
-		dateCreated = json.getString(mContext.getString(R.string.key_date_modified));
+	public void getPrescriptionFromJSON(JSONObject json)
+			throws NumberFormatException, JSONException {
+		patientId = Integer.parseInt(json.getString(mContext
+				.getString(R.string.key_patient_id)));
+		doctorId = Integer.parseInt(json.getString(mContext
+				.getString(R.string.key_doctor_id)));
+		historyId = Integer.parseInt(json.getString(mContext
+				.getString(R.string.key_history_id)));
+		dateCreated = json.getString(mContext
+				.getString(R.string.key_date_modified));
 	}
-	
+
 	public ArrayList<Symptom> getSymptoms() {
 		return mSymptoms;
 	}
@@ -75,6 +80,10 @@ public class Prescription {
 
 	public Note getNote() {
 		return mNote;
+	}
+
+	public int getHistoryId() {
+		return historyId;
 	}
 
 }

@@ -19,7 +19,7 @@ class DB_Functions_Prescription {
 
     public function getPatientHistory($patientId, $doctorId) {
 
-        $result = mysqli_query($this->mysqli, "SELECT * from patient_history where patient_id = $patientId and doctor_id = $doctorId and saved = 'Y';");
+        $result = mysqli_query($this->mysqli, "SELECT * from patient_history where patient_id = $patientId and saved = 'Y' order by history_id;");
         $rows = array();
         while ($r = mysqli_fetch_assoc($result)) {
             $rows[] = $r;
@@ -51,6 +51,12 @@ class DB_Functions_Prescription {
         } else {
             return false;
         }
+    }
+    
+    public function savePrescriptoin($historyId) {
+        
+        $result = mysqli_query($this->mysqli, "update patient_history set saved = 'Y' where history_id = $historyId;");
+        return $result;
     }
 
 }
