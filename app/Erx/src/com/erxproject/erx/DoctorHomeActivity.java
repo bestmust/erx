@@ -65,7 +65,7 @@ public class DoctorHomeActivity extends Activity {
 	}
 
 	public void openLoginPatient(View view) {
-		Intent intent = new Intent(this, DocPatientLoginActivity.class);
+		Intent intent = new Intent(this, DoctorPatientLoginActivity.class);
 		startActivity(intent);
 	}
 }

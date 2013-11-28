@@ -1,4 +1,5 @@
 <?php
+
 //error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 /**
  * File to handle all API requests
@@ -32,11 +33,10 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
         
     } else if ($tag == 'update') {
         
-    } else if ($tag == 'delete'){
+    } else if ($tag == 'delete') {
         
     }
-}
-else {
+} else {
     echo 'Access Denied!';
 }
 ?>

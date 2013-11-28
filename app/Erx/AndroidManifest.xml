@@ -38,7 +38,7 @@
             android:label="Disease Diagnosed" >
         </activity>
         <activity
-            android:name=".DocPatientHomeActivity"
+            android:name=".DoctorPatientHomeActivity"
             android:label="DocPatientHomePage" >
         </activity>
         <activity
@@ -46,7 +46,7 @@
             android:label="Prescription" >
         </activity>
         <activity
-            android:name=".DocPatientLoginActivity"
+            android:name=".DoctorPatientLoginActivity"
             android:label="DocPatientLogin" >
         </activity>
         <activity
@@ -63,6 +63,10 @@
         </activity>
         <activity
             android:name=".PatientHistory"
+            android:label="Patient History" >
+        </activity>
+        <activity
+            android:name=".PatientHistoryListActivity"
             android:label="Patient History" >
         </activity>
         <activity

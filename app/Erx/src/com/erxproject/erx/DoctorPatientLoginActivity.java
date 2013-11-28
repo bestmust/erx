@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class DocPatientLoginActivity extends Activity {
+public class DoctorPatientLoginActivity extends Activity {
 
 	EditText inputEmail;
 	EditText inputPassword;
@@ -59,7 +59,7 @@ public class DocPatientLoginActivity extends Activity {
 					p.getPatientFromJSON(json);
 
 					Intent intent = new Intent(this,
-							DocPatientHomeActivity.class);
+							DoctorPatientHomeActivity.class);
 					startActivity(intent);
 					finish();
 

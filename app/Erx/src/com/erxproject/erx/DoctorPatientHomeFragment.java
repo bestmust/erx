@@ -16,9 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class DocPatientHomeFragment extends Fragment {
+public class DoctorPatientHomeFragment extends Fragment {
 
 	Button btnPrescription;
+	Button btnHistory;
 	Patient patient;
 	Doctor doctor;
 
@@ -30,20 +31,31 @@ public class DocPatientHomeFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_doc_patient, parent, false);
+		View v = inflater.inflate(R.layout.fragment_doctor_patient_home,
+				parent, false);
 		doctor = Doctor.get(getActivity());
 		patient = Patient.get(getActivity());
 		getActivity().setTitle("Patient: " + patient.getName());
 
 		btnPrescription = (Button) v.findViewById(R.id.btnDPHomePrescription);
-
 		btnPrescription.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 
 				Intent intent = new Intent(getActivity(),
 						PrescriptionActivity.class);
+				startActivity(intent);
+
+			}
+		});
+
+		btnHistory = (Button) v.findViewById(R.id.btnDoctorPatientHomeHistory);
+		btnHistory.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(),
+						PatientHistoryListActivity.class);
 				startActivity(intent);
 
 			}

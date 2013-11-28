@@ -1,4 +1,5 @@
 <?php
+
 //error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 /**
  * File to handle all API requests
@@ -6,27 +7,27 @@
  * 
  * Each request will be identified by TAG
  * Response will be JSON data
- 
+
   /**
  * check for POST request 
  */
 if (isset($_POST['tag']) && $_POST['tag'] != '') {
     // get tag
     $tag = $_POST['tag'];
- 
+
     // include db handler
     require_once 'include/DB_Functions_Doctor.php';
     $db = new DB_Functions_Doctor();
- 
+
     // response Array
     $response = array("tag" => $tag, "success" => 0, "error" => 0);
- 
+
     // check for tag type
     if ($tag == 'login') {
         // Request type is check Login
         $email = $_POST['email'];
         $password = $_POST['password'];
- 
+
         // check for user
         $user = $db->getUserByEmailAndPassword($email, $password);
         if ($user != false) {
@@ -52,7 +53,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
- 
+
         // check if user is already existed
         if ($db->isUserExisted($email)) {
             // user is already existed - error response

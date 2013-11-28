@@ -13,7 +13,7 @@
         android:text="New Prescription" />
 
     <Button
-        android:id="@+id/btnDPHomeHistory"
+        android:id="@+id/btnDoctorPatientHomeHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
