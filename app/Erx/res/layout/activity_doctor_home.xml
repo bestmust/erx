@@ -10,7 +10,43 @@
         android:orientation="vertical"
         android:padding="10dip" >
          
-        <!--  Patient Login Button -->       
+        <!--  Patient Login Button -->
+        
+        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/doctorHomeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date:"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/doctorHomeLastVisit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last visit:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/doctorHomeVisitNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visit number"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+            </LinearLayout>
+        
+        </LinearLayout>
+       
         <Button
             android:id="@+id/btnPLogin"
             android:layout_width="fill_parent"

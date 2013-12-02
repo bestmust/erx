@@ -93,6 +93,10 @@ class DB_Functions_Doctor {
             return false;
         }
     }
+    
+    public function updateLastLoginAndLoginNumber($email) {
+        return mysqli_query($this->mysqli, "update users set last_login = NOW(), login_number = login_number + 1 where email = '$email';") or die(mysqli_error($this->mysqli));
+    }
 
     /**
      * Check user is existed or not

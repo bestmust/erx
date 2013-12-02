@@ -1,6 +1,9 @@
 package com.erxproject.erx.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -61,6 +64,20 @@ public class DoctorController {
 			d.setUid(user.get("uid"));
 			d.setCreatedAt(user.get("created_at"));
 			d.setDoctorId(user.get("doctor_id"));
+			d.setLoginNumber(user.get("login_number"));
+			String dateString = user.get("last_login");
+			if (dateString != "null") {
+				SimpleDateFormat dateFormat = new SimpleDateFormat(
+						"yyyy-MM-dd hh:mm:ss");
+				try {
+					d.setLastVisitDate(dateFormat.parse(dateString));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				d.setLastVisitDate(null);
+			}
 
 			return d;
 		} else

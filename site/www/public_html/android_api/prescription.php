@@ -76,6 +76,22 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             $response["error_msg"] = "Error in creating new prescription.";
             echo json_encode($response);
         }
+    } else if ($tag == 'save_prescription') {
+        $historyId = $_POST['history_id'];
+        
+        $saved = $dbFunctionsPrescription->savePrescriptoin($historyId);
+        
+        if($saved != false) {
+            
+            $response["success"] = 1;
+            $response["saved"] = "true";
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in saving prescription.";
+            echo json_encode($response);
+        }
+        
     }
     
     else {

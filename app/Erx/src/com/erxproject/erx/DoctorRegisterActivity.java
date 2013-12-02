@@ -87,7 +87,8 @@ public class DoctorRegisterActivity extends Activity {
 									json.getString(KEY_UID),
 									json_user.getString(KEY_CREATED_AT),
 									json_user.getString(KEY_PERSON_ID),
-									json_user.getString(KEY_DOCTOR_ID));
+									json_user.getString(KEY_DOCTOR_ID),
+									"null","1");
 							// Launch Dashboard Screen
 							Intent dashboard = new Intent(
 									getApplicationContext(),

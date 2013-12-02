@@ -1,5 +1,7 @@
 package com.erxproject.erx.model;
 
+import java.util.Date;
+
 import android.content.Context;
 
 public class Doctor {
@@ -12,6 +14,8 @@ public class Doctor {
 	private String uid;
 	private String createdAt;
 	private int doctorId;
+	private Date lastVisitDate;
+	private int loginNumber;
 
 	public int getDoctorId() {
 		return doctorId;
@@ -70,6 +74,22 @@ public class Doctor {
 
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public Date getLastVisitDate() {
+		return lastVisitDate;
+	}
+
+	public void setLastVisitDate(Date lastVisitDate) {
+		this.lastVisitDate = lastVisitDate;
+	}
+
+	public int getLoginNumber() {
+		return loginNumber;
+	}
+
+	public void setLoginNumber(String loginNumber) {
+		this.loginNumber = Integer.parseInt(loginNumber) +1;
 	}
 
 }

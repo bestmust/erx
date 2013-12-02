@@ -96,7 +96,9 @@ public class LoginActivity extends Activity {
 									json.getString(KEY_UID),
 									json_user.getString(KEY_CREATED_AT),
 									json_user.getString(KEY_PERSON_ID),
-									json_user.getString(KEY_DOCTOR_ID));
+									json_user.getString(KEY_DOCTOR_ID),
+									json_user.getString(getString(R.string.key_last_login)),
+									json_user.getString(getString(R.string.key_login_number)));
 
 							// Launch Dashboard Screen
 							Intent dashboard = new Intent(

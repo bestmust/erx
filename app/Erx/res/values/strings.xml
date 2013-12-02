@@ -25,6 +25,8 @@
     <string name="key_name">name</string>
     <string name="key_email">email</string>
     <string name="key_created_at">created_at</string>
+    <string name="key_last_login">last_login</string>
+    <string name="key_login_number">login_number</string>
     <string name="key_person_id">person_id</string>
     <string name="key_patient_id">patient_id</string>
     <string name="key_doctor_id">doctor_id</string>

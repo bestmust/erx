@@ -14,7 +14,7 @@ $mysqli_password = "tiger123x";
 
 $mysqli = new mysqli($mysqli_host, $mysqli_user, $mysqli_password, $mysqli_database);
 
-$result = mysqli_query($mysqli, "SELECT * from patient_history;");
+$result = mysqli_query($mysqli, "SELECT * from users;");
 $rows = array();
 while ($r = mysqli_fetch_assoc($result)) {
     $rows['patient_history'][] = $r;

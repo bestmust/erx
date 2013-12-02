@@ -41,6 +41,11 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             $response["user"]["updated_at"] = $user["updated_at"];
             $response["user"]["person_id"] = $user["person_id"];
             $response["user"]["doctor_id"] = $user["doctor_id"];
+            $response["user"]["last_login"] = $user["last_login"];
+            $response["user"]["login_number"] = $user["login_number"];
+            
+            $db->updateLastLoginAndLoginNumber($email);
+            
             echo json_encode($response);
         } else {
             // user not found

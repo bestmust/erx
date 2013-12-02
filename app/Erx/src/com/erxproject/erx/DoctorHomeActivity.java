@@ -1,5 +1,9 @@
 package com.erxproject.erx;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +18,9 @@ public class DoctorHomeActivity extends Activity {
 	DoctorController doctorController;
 	Button btnLogout;
 	TextView title;
+	TextView date;
+	TextView lastLogin;
+	TextView visitNumber;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,11 +41,29 @@ public class DoctorHomeActivity extends Activity {
 			setContentView(R.layout.activity_doctor_home);
 
 			// get the doctor details
-			Doctor d = doctorController.getUser();
+			Doctor d;
+			d = doctorController.getUser();
 			setTitle(d.getName() + "'s Home");
 
 			btnLogout = (Button) findViewById(R.id.btnLogout);
-
+			date = (TextView) findViewById(R.id.doctorHomeDate);
+			lastLogin = (TextView) findViewById(R.id.doctorHomeLastVisit);
+			visitNumber = (TextView) findViewById(R.id.doctorHomeVisitNumber);
+			
+			Date dateObject = new Date(System.currentTimeMillis());
+			SimpleDateFormat dateFormatter = new SimpleDateFormat("EEE, d MMM yyyy");
+			SimpleDateFormat lastVisitFormatter = new SimpleDateFormat("dd/MM/yy hh:mm:ss");
+		    String s = dateFormatter.format(dateObject);
+			
+			date.setText(s);
+			visitNumber.setText("Login Number: " + d.getLoginNumber());
+			Date lastVisitDate = d.getLastVisitDate();
+			if (lastVisitDate!=null) {
+			lastLogin.setText("Last Login: " + lastVisitFormatter.format(d.getLastVisitDate()));
+			}
+			else {
+				lastLogin.setText("");
+			}
 			btnLogout.setOnClickListener(new View.OnClickListener() {
 
 				@Override

@@ -2,6 +2,8 @@ package com.erxproject.erx.library;
 
 import java.util.HashMap;
 
+import com.erxproject.erx.R;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
+	
+	private Context mContext;
 
 	// All Static variables
 	// Database Version
@@ -31,13 +35,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		mContext = context.getApplicationContext();
 	}
 
 	/**
 	 * Storing user details in database
 	 * */
 	public void addUser(String name, String email, String uid,
-			String created_at, String person_id, String doctor_id) {
+			String created_at, String person_id, String doctor_id, String last_login, String login_number) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
@@ -47,6 +52,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_CREATED_AT, created_at); // Created At
 		values.put(KEY_PERSON_ID, person_id);
 		values.put(KEY_DOCTOR_ID, doctor_id);
+		values.put(mContext.getString(R.string.key_last_login), last_login);
+		values.put(mContext.getString(R.string.key_login_number), login_number);
 
 		// Inserting Row
 		db.insert(TABLE_LOGIN, null, values);
@@ -86,6 +93,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			user.put("created_at", cursor.getString(4));
 			user.put("person_id", cursor.getString(5));
 			user.put("doctor_id", cursor.getString(6));
+			user.put("last_login", cursor.getString(7));
+			user.put("login_number", cursor.getString(8));
 		}
 		cursor.close();
 		db.close();
@@ -100,7 +109,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
 				+ KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
 				+ KEY_CREATED_AT + " TEXT," + KEY_PERSON_ID + " TEXT,"
-				+ KEY_DOCTOR_ID + " TEXT)";
+				+ KEY_DOCTOR_ID + " TEXT," 
+				+ mContext.getString(R.string.key_last_login) + " TEXT,"
+				+ mContext.getString(R.string.key_login_number) + " TEXT)";
 		db.execSQL(CREATE_LOGIN_TABLE);
 	}
 
