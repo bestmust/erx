@@ -49,19 +49,21 @@ public class DoctorHomeActivity extends Activity {
 			date = (TextView) findViewById(R.id.doctorHomeDate);
 			lastLogin = (TextView) findViewById(R.id.doctorHomeLastVisit);
 			visitNumber = (TextView) findViewById(R.id.doctorHomeVisitNumber);
-			
+
 			Date dateObject = new Date(System.currentTimeMillis());
-			SimpleDateFormat dateFormatter = new SimpleDateFormat("EEE, d MMM yyyy");
-			SimpleDateFormat lastVisitFormatter = new SimpleDateFormat("dd/MM/yy hh:mm:ss");
-		    String s = dateFormatter.format(dateObject);
-			
+			SimpleDateFormat dateFormatter = new SimpleDateFormat(
+					"EEE, d MMM yyyy");
+			SimpleDateFormat lastVisitFormatter = new SimpleDateFormat(
+					"dd/MM/yy hh:mm:ss");
+			String s = dateFormatter.format(dateObject);
+
 			date.setText(s);
 			visitNumber.setText("Login Number: " + d.getLoginNumber());
 			Date lastVisitDate = d.getLastVisitDate();
-			if (lastVisitDate!=null) {
-			lastLogin.setText("Last Login: " + lastVisitFormatter.format(d.getLastVisitDate()));
-			}
-			else {
+			if (lastVisitDate != null) {
+				lastLogin.setText("Last Login: "
+						+ lastVisitFormatter.format(d.getLastVisitDate()));
+			} else {
 				lastLogin.setText("");
 			}
 			btnLogout.setOnClickListener(new View.OnClickListener() {

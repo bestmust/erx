@@ -38,11 +38,11 @@ class DB_Functions_Prescription {
             return false;
         }
     }
-    
+
     public function createNewPrescription($patientId, $personId, $doctorId) {
 
         $result = mysqli_query($this->mysqli, "insert into patient_history (patient_id,person_id,doctor_id,saved) VALUES($patientId,$personId,$doctorId,'N');");
-        
+
         if ($result == true) {
             $historyId = mysqli_insert_id($this->mysqli);
             $result = mysqli_query($this->mysqli, "SELECT * from patient_history where history_id = $historyId;");
@@ -52,10 +52,35 @@ class DB_Functions_Prescription {
             return false;
         }
     }
-    
+
     public function savePrescriptoin($historyId) {
-        
+
         $result = mysqli_query($this->mysqli, "update patient_history set saved = 'Y' where history_id = $historyId;");
+        return $result;
+    }
+
+    public function getSymptoms($historyId) {
+        $result = mysqli_query($this->mysqli, "SELECT * from symptoms where history_id = $historyId;");
+        $rows = array();
+        while ($r = mysqli_fetch_assoc($result)) {
+            $rows[] = $r;
+        }
+        return $rows;
+    }
+
+    public function saveSymptom($historyId, $symptom) {
+        $result = mysqli_query($this->mysqli, "insert into symptoms (history_id,symptom) values($historyId,'$symptom');");
+        if ($result == true) {
+            $symptomId = mysqli_insert_id($this->mysqli);
+            return $symptomId;
+        } else {
+            return false;
+        }
+    }
+    
+    public function getSymptom($symptomId) {
+        $result = mysqli_query($this->mysqli, "select * from symptoms where symptom_id = $symptomId;");
+        $result = mysqli_fetch_array($result);
         return $result;
     }
 

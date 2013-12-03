@@ -26,13 +26,6 @@ public class Prescription {
 
 	private Prescription(Context context) {
 		mContext = context.getApplicationContext();
-		mSymptoms = new ArrayList<Symptom>();
-
-		for (int i = 0; i < 10; i++) {
-			Symptom s = new Symptom();
-			s.setName("symptom " + i);
-			mSymptoms.add(s);
-		}
 	}
 
 	public static Prescription get(Context context) {
@@ -84,6 +77,10 @@ public class Prescription {
 
 	public int getHistoryId() {
 		return historyId;
+	}
+
+	public void setSymptoms(ArrayList<Symptom> mSymptoms) {
+		this.mSymptoms = mSymptoms;
 	}
 
 }

@@ -92,6 +92,46 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             echo json_encode($response);
         }
         
+    } else if ($tag == 'get_symptoms_list') {
+        $historyId = $_POST["history_id"];
+        $symptoms = $dbFunctionsPrescription->getSymptoms($historyId);
+        
+        if($symptoms!= false) {
+            $response["success"] = 1;
+            $response["symptoms"] = $symptoms;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in getting symptoms.";
+            echo json_encode($response);
+        }
+    } else if ($tag == 'save_symptom') {
+        $historyId = $_POST["history_id"];
+        $symptom = $_POST["symptom"];
+        $symptomId = $dbFunctionsPrescription->saveSymptom($historyId,$symptom);
+        
+        if($symptomId!= false) {
+            $response["success"] = 1;
+            $response["symptom_id"] = $symptomId;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in saving symptom.";
+            echo json_encode($response);
+        }
+    } else if ($tag == 'get_symptom_from_id') {
+        $symptomId = $_POST["symptom_id"];
+        $symptom = $dbFunctionsPrescription->getSymptom($symptomId);
+        
+        if($symptom!= false) {
+            $response["success"] = 1;
+            $response["symptom"] = $symptom;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in getting the symptom.";
+            echo json_encode($response);
+        }
     }
     
     else {

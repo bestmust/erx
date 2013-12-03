@@ -29,6 +29,8 @@
     <string name="key_login_number">login_number</string>
     <string name="key_person_id">person_id</string>
     <string name="key_patient_id">patient_id</string>
+    <string name="key_symptom">symptom</string>
+    <string name="key_symptom_id">symptom_id</string>
     <string name="key_doctor_id">doctor_id</string>
     <string name="key_history_id">history_id</string>
     <string name="key_date_modified">date_modified</string>
@@ -36,5 +38,8 @@
     <string name="tag_check_unsaved_prescription">check_unsaved_prescription</string>
     <string name="tag_create_new_prescription">create_new_prescription</string>
     <string name="tag_save_prescription">save_prescription</string>
-
+    <string name="tag_get_symptoms">get_symptoms_list</string>
+    <string name="tag_save_symptom">save_symptom</string>
+    <string name="tag_get_symptom_from_symptom_id">get_symptom_from_id</string>
+    
 </resources>

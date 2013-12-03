@@ -2,6 +2,7 @@ package com.erxproject.erx;
 
 import java.util.ArrayList;
 
+import com.erxproject.erx.controller.PrescriptionController;
 import com.erxproject.erx.model.Prescription;
 import com.erxproject.erx.model.prescription.Symptom;
 
@@ -15,6 +16,8 @@ import android.widget.EditText;
 
 public class SymptomAddEditFragment extends Fragment {
 
+	PrescriptionController prescriptionController;
+	Prescription prescription;
 	EditText inputSymptom;
 	EditText inputDetails;
 	Button btnSave;
@@ -23,6 +26,8 @@ public class SymptomAddEditFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		prescriptionController = new PrescriptionController(getActivity());
+		prescription = Prescription.get(getActivity());
 	}
 
 	@Override
@@ -40,9 +45,10 @@ public class SymptomAddEditFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				Symptom s = new Symptom();
-				s.setName(inputSymptom.getText().toString());
-				s.setDetails(inputDetails.getText().toString());
+				int historyId = prescription.getHistoryId();
+				int symptomId = prescriptionController.saveSymptom(historyId,inputSymptom.getText().toString());
+				
+				Symptom s = prescriptionController.getSymptom(symptomId);
 
 				Prescription prescription = Prescription.get(getActivity());
 				ArrayList<Symptom> symptomList = prescription.getSymptoms();

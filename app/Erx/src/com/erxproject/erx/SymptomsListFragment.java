@@ -2,6 +2,10 @@ package com.erxproject.erx;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Patient;
 import com.erxproject.erx.model.Prescription;
 import com.erxproject.erx.model.prescription.Symptom;
 
@@ -17,14 +21,30 @@ public class SymptomsListFragment extends ListFragment {
 
 	private ArrayList<Symptom> mSymptoms;
 	private Prescription tempPrescription;
+	private PrescriptionController prescriptionController;
+	private Patient patient;
+	private Prescription prescription;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActivity().setTitle(R.string.symptoms_title);
-		tempPrescription = Prescription.get(getActivity());
-		mSymptoms = tempPrescription.getSymptoms();
-
+		patient = Patient.get(getActivity());
+		prescriptionController = new PrescriptionController(getActivity());
+		prescription = Prescription.get(getActivity());
+		
+		try {
+			mSymptoms = prescriptionController.getSymptomList(prescription.getHistoryId());
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		prescription.setSymptoms(mSymptoms);
+		
 		SymptomsAdapter adapter = new SymptomsAdapter(mSymptoms);
 
 		setListAdapter(adapter);
@@ -56,8 +76,8 @@ public class SymptomsListFragment extends ListFragment {
 					.findViewById(R.id.symptomNumberTextView);
 			TextView symptomTitleTextView = (TextView) convertView
 					.findViewById(R.id.symptomTitleTextView);
-			symptomNumberTextView.setText("" + position + " ");
-			symptomTitleTextView.setText(s.getName());
+			symptomNumberTextView.setText("" + (position + 1) + " ");
+			symptomTitleTextView.setText(s.getDetails());
 
 			return convertView;
 		}

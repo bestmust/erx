@@ -13,6 +13,7 @@ import com.erxproject.erx.R;
 import com.erxproject.erx.library.JSONParser;
 import com.erxproject.erx.model.Prescription;
 import com.erxproject.erx.model.PrescriptionListItem;
+import com.erxproject.erx.model.prescription.Symptom;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -133,6 +134,93 @@ public class PrescriptionController {
 		else {
 			return false;
 		}
+	}
+	
+	public ArrayList<Symptom> getSymptomList(int historyId) throws NumberFormatException, JSONException {
+		JSONObject json,jsonSymptom;
+		JSONArray jsonSymptomList;
+		Symptom tempSymptom;
+		ArrayList<Symptom> symptomList = new ArrayList<Symptom>();
+		int length;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_get_symptoms)));
+		params.add(new BasicNameValuePair(mContext.getString(R.string.key_history_id),"" + historyId));
+		
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+		
+		if (Integer.parseInt(json.getString("success")) == 1) {
+			jsonSymptomList = json.getJSONArray("symptoms");
+			length = jsonSymptomList.length();
+
+			for (int i = 0; i < length; i++) {
+				jsonSymptom = jsonSymptomList.getJSONObject(i);
+				tempSymptom = new Symptom(
+						jsonSymptom.getString("symptom"),
+						jsonSymptom.getInt("symptom_id"),
+						jsonSymptom.getInt("history_id"));
+				symptomList.add(tempSymptom);
+			}
+			return symptomList;
+		}
+		else {
+			return symptomList;
+		}
+		
+	}
+	
+	public int saveSymptom(int historyId, String symptom) {
+		JSONObject json;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_save_symptom)));
+		params.add(new BasicNameValuePair(mContext.getString(R.string.key_history_id),"" + historyId));
+		params.add(new BasicNameValuePair(mContext.getString(R.string.key_symptom),"" + symptom));
+		
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+		
+		try {
+			if (Integer.parseInt(json.getString("success")) == 1) {
+				int symptomId = json.getInt("symptom_id");
+				return symptomId;
+			}
+			else {
+				return -1;
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public Symptom getSymptom(int symptomId) {
+		JSONObject json,jsonSymptom;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_get_symptom_from_symptom_id)));
+		params.add(new BasicNameValuePair(mContext.getString(R.string.key_symptom_id),"" + symptomId));
+		
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+		
+		try {
+			if (Integer.parseInt(json.getString("success")) == 1) {
+				jsonSymptom = json.getJSONObject("symptom");
+				Symptom s = new Symptom(jsonSymptom.getString("symptom"),jsonSymptom.getInt("symptom_id"),jsonSymptom.getInt("history_id"));
+				return s;
+			}
+			else {
+				return null;
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 
 }

@@ -26,4 +26,17 @@ public class Symptom {
 	public void setDetails(String mDetails) {
 		this.mDetails = mDetails;
 	}
+
+	public Symptom(String mDetails, int mSymptomId, int mHistoryId) {
+		super();
+		this.mName = "";
+		this.mDetails = mDetails;
+		this.mSymptomId = mSymptomId;
+		this.mHistoryId = mHistoryId;
+	}
+	
+	public Symptom() {
+		super();
+		this.mName = "";
+	}
 }
