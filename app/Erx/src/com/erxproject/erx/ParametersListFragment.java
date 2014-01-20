@@ -2,6 +2,10 @@ package com.erxproject.erx;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Patient;
 import com.erxproject.erx.model.Prescription;
 import com.erxproject.erx.model.prescription.Parameter;
 import com.erxproject.erx.model.prescription.Symptom;
@@ -18,13 +22,28 @@ public class ParametersListFragment extends ListFragment {
 
 	private ArrayList<Parameter> mParameters;
 	private Prescription tempPrescription;
+	private PrescriptionController prescriptionController;
+	private Patient patient;
+	private Prescription prescription;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getActivity().setTitle(R.string.symptoms_title);
-		tempPrescription = Prescription.get(getActivity());
-		mParameters = tempPrescription.getParameters();
+		getActivity().setTitle("Parameters");
+		patient = Patient.get(getActivity());
+		prescriptionController = new PrescriptionController(getActivity());
+		prescription = Prescription.get(getActivity());
+		
+		try {
+			mParameters = prescriptionController.getParameterList(prescription.getHistoryId());
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		prescription.setParameters(mParameters);
 
 		ParametersAdapter adapter = new ParametersAdapter(mParameters);
 
@@ -51,14 +70,14 @@ public class ParametersListFragment extends ListFragment {
 						R.layout.list_item_parameter, null);
 			}
 
-			Parameter s = getItem(position);
+			Parameter p = getItem(position);
 
 			TextView parameterNameTextView = (TextView) convertView
 					.findViewById(R.id.parameterNameTextView);
 			TextView parameterValueTextView = (TextView) convertView
 					.findViewById(R.id.parameterValueTextView);
-			parameterNameTextView.setText("Title");
-			parameterValueTextView.setText("Value");
+			parameterNameTextView.setText(p.getmParameterType());
+			parameterValueTextView.setText(p.getmParameterValue());
 
 			return convertView;
 		}

@@ -24,7 +24,7 @@ public class ParametersListActivity extends SingleFragmentActivityWithAdd {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(ParametersListActivity.this,
-						ParametersAddEditFragment.class);
+						ParameterAddEditActivity.class);
 				startActivity(i);
 			}
 

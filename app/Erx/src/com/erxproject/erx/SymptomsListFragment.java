@@ -20,17 +20,14 @@ import android.widget.TextView;
 public class SymptomsListFragment extends ListFragment {
 
 	private ArrayList<Symptom> mSymptoms;
-	private Prescription tempPrescription;
 	private PrescriptionController prescriptionController;
-	private Patient patient;
 	private Prescription prescription;
 	
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActivity().setTitle(R.string.symptoms_title);
-		patient = Patient.get(getActivity());
+		Patient.get(getActivity());
 		prescriptionController = new PrescriptionController(getActivity());
 		prescription = Prescription.get(getActivity());
 		

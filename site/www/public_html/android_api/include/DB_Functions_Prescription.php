@@ -83,7 +83,31 @@ class DB_Functions_Prescription {
         $result = mysqli_fetch_array($result);
         return $result;
     }
-
+    
+    public function getParameters($historyId) {
+        $result = mysqli_query($this->mysqli, "SELECT * from parameters where history_id = $historyId;");
+        $rows = array();
+        while ($r = mysqli_fetch_assoc($result)) {
+            $rows[] = $r;
+        }
+        return $rows;
+    }
+    
+    public function saveParameter($historyId, $parameterType, $value) {
+        $result = mysqli_query($this->mysqli, "insert into parameters (history_id,parameter_type,value) values($historyId,'$parameterType','$value');");
+        if ($result == true) {
+            $parameterId = mysqli_insert_id($this->mysqli);
+            return $parameterId;
+        } else {
+            return false;
+        }
+    }
+    
+    public function getParameter($parameterId) {
+        $result = mysqli_query($this->mysqli, "select * from parameters where parameter_id = $parameterId;");
+        $result = mysqli_fetch_array($result);
+        return $result;
+    }
 }
 
 ?>

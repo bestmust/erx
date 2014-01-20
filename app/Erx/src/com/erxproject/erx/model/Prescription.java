@@ -83,4 +83,8 @@ public class Prescription {
 		this.mSymptoms = mSymptoms;
 	}
 
+	public void setParameters(ArrayList<Parameter> mParameter) {
+		this.mParamter = mParameter;
+	}
+
 }

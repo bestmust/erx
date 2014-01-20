@@ -1,6 +1,15 @@
 package com.erxproject.erx.model.prescription;
 
 public class Parameter {
+	public Parameter(int mParameterId, int mHistoryId, String mParameterType,
+			String mParameterValue) {
+		super();
+		this.mParameterId = mParameterId;
+		this.mHistoryId = mHistoryId;
+		this.mParameterType = mParameterType;
+		this.mParameterValue = mParameterValue;
+	}
+
 	private int mParameterId;
 	private int mHistoryId;
 	private String mParameterType;

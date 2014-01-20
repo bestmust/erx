@@ -132,8 +132,48 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             $response["error_msg"] = "Error in getting the symptom.";
             echo json_encode($response);
         }
+    } else if ($tag == 'get_parameters_list') {
+        $historyId = $_POST["history_id"];
+        $parameters = $dbFunctionsPrescription->getParameters($historyId);
+        
+        if($parameters!= false) {
+            $response["success"] = 1;
+            $response["parameters"] = $parameters;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in getting parameters.";
+            echo json_encode($response);
+        }
+    } else if ($tag == 'save_parameter') {
+        $historyId = $_POST["history_id"];
+        $parameterType = $_POST["parameter_type"];
+        $value = $_POST["value"];
+        $parameterId = $dbFunctionsPrescription->saveParameter($historyId,$parameterType,$value);
+        
+        if($parameterId!= false) {
+            $response["success"] = 1;
+            $response["parameter_id"] = $parameterId;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in saving parameter.";
+            echo json_encode($response);
+        }
+    } else if ($tag == 'get_parameter_from_id') {
+        $parameterId = $_POST["parameter_id"];
+        $parameter = $dbFunctionsPrescription->getParameter($parameterId);
+        
+        if($parameter!= false) {
+            $response["success"] = 1;
+            $response["parameter"] = $parameter;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in getting the parameter.";
+            echo json_encode($response);
+        }
     }
-    
     else {
         print "Access Denied";
     }

@@ -59,7 +59,7 @@ public class PrescriptionActivity extends Activity {
 	}
 
 	public void openParameters(View view) {
-		Intent intent = new Intent(this, Parameters.class);
+		Intent intent = new Intent(this, ParametersListActivity.class);
 		startActivity(intent);
 	}
 

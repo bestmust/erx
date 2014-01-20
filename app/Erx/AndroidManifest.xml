@@ -93,6 +93,14 @@
             android:name=".SymptomAddEditActivity"
             android:label="Symptoms" >
         </activity>
+        <activity
+            android:name=".ParametersListActivity"
+            android:label="Parameters" >
+        </activity>
+        <activity
+            android:name=".ParameterAddEditActivity"
+            android:label="Parameters" >
+        </activity>
     </application>
 
     <!-- Allow to connect with internet -->
