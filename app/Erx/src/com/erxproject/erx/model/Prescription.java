@@ -18,8 +18,8 @@ public class Prescription {
 	private String dateCreated;
 	private Context mContext;
 	private ArrayList<Symptom> mSymptoms;
-	private ArrayList<Parameter> mParamter;
-	private ArrayList<Disease> mDisease;
+	private ArrayList<Parameter> mParamters;
+	private ArrayList<Disease> mDiseases;
 	private ArrayList<Medicine> mMedicine;
 	private Note mNote;
 	private static Prescription mPrescription;
@@ -60,11 +60,11 @@ public class Prescription {
 	}
 
 	public ArrayList<Parameter> getParameters() {
-		return mParamter;
+		return mParamters;
 	}
 
 	public ArrayList<Disease> getDisease() {
-		return mDisease;
+		return mDiseases;
 	}
 
 	public ArrayList<Medicine> getMedicine() {
@@ -84,7 +84,11 @@ public class Prescription {
 	}
 
 	public void setParameters(ArrayList<Parameter> mParameter) {
-		this.mParamter = mParameter;
+		this.mParamters = mParameter;
+	}
+
+	public void setDiseases(ArrayList<Disease> mDiseases) {
+		this.mDiseases = mDiseases;
 	}
 
 }

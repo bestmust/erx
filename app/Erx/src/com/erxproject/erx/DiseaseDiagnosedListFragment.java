@@ -2,6 +2,9 @@ package com.erxproject.erx;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+
+import com.erxproject.erx.controller.PrescriptionController;
 import com.erxproject.erx.model.Prescription;
 import com.erxproject.erx.model.prescription.Disease;
 import com.erxproject.erx.model.prescription.Symptom;
@@ -18,13 +21,25 @@ public class DiseaseDiagnosedListFragment extends ListFragment {
 
 	private ArrayList<Disease> mDiseases;
 	private Prescription tempPrescription;
+	private PrescriptionController pc;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// getActivity().setTitle(R.string.symptoms_title);
 		tempPrescription = Prescription.get(getActivity());
-		mDiseases = tempPrescription.getDisease();
+		pc = new PrescriptionController(getActivity());
+		try {
+			mDiseases = pc.getDiseasesDiagnosedList(tempPrescription
+					.getHistoryId());
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tempPrescription.setDiseases(mDiseases);
 
 		DiseaseAdapter adapter = new DiseaseAdapter(mDiseases);
 
@@ -52,13 +67,10 @@ public class DiseaseDiagnosedListFragment extends ListFragment {
 			}
 
 			Disease d = getItem(position);
-			//
-			// TextView symptomNumberTextView = (TextView) convertView
-			// .findViewById(R.id.symptomNumberTextView);
-			// TextView symptomTitleTextView = (TextView) convertView
-			// .findViewById(R.id.symptomTitleTextView);
-			// symptomNumberTextView.setText("" + position + " ");
-			// symptomTitleTextView.setText(s.getName());
+
+			TextView diseaseName = (TextView) convertView
+					.findViewById(R.id.diseaseName);
+			diseaseName.setText(d.getDisease());
 
 			return convertView;
 		}

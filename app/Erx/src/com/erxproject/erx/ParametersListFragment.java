@@ -21,16 +21,14 @@ import android.widget.TextView;
 public class ParametersListFragment extends ListFragment {
 
 	private ArrayList<Parameter> mParameters;
-	private Prescription tempPrescription;
 	private PrescriptionController prescriptionController;
-	private Patient patient;
 	private Prescription prescription;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActivity().setTitle("Parameters");
-		patient = Patient.get(getActivity());
+		Patient.get(getActivity());
 		prescriptionController = new PrescriptionController(getActivity());
 		prescription = Prescription.get(getActivity());
 

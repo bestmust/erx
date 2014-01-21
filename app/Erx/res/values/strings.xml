@@ -4,7 +4,7 @@
     <string name="app_name">Erx</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="site">http://mustaqim.ignorelist.com</string>
+    <string name="site">http://192.168.0.101</string>
     <string name="production_site">http://mustaqim.ignorelist.com</string>
     <string name="test_site">http://mustaqim.herobo.com</string>
     <string name="local_site">http://192.168.0.101</string>
@@ -45,5 +45,7 @@
     <string name="tag_get_parameters">get_parameters_list</string>
     <string name="tag_save_parameter">save_parameter</string>
     <string name="tag_get_parameter_from_parameter_id">get_parameter_from_id</string>
-    
+    <string name="tag_get_diseases_diagnosed">get_disease_diagnosed_list</string>
+    <string name="tag_save_disease_diagnosed">save_disease_diagnosed</string>
+    <string name="tag_get_disease_diagnosed_from_id">get_disease_diagnosed_from_id</string>
 </resources>

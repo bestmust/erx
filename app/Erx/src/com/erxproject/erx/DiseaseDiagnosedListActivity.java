@@ -25,7 +25,7 @@ public class DiseaseDiagnosedListActivity extends SingleFragmentActivityWithAdd 
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(DiseaseDiagnosedListActivity.this,
-						DiseaseDiagnosedAddEditFragment.class);
+						DiseaseDiagnosedAddEditActivity.class);
 				startActivity(i);
 			}
 

@@ -101,6 +101,14 @@
             android:name=".ParameterAddEditActivity"
             android:label="Parameters" >
         </activity>
+        <activity
+            android:name=".DiseaseDiagnosedListActivity"
+            android:label="Parameters" >
+        </activity>
+        <activity
+            android:name=".DiseaseDiagnosedAddEditActivity"
+            android:label="Disease Diagnosed" >
+        </activity>
     </application>
 
     <!-- Allow to connect with internet -->

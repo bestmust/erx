@@ -13,6 +13,7 @@ import com.erxproject.erx.R;
 import com.erxproject.erx.library.JSONParser;
 import com.erxproject.erx.model.Prescription;
 import com.erxproject.erx.model.PrescriptionListItem;
+import com.erxproject.erx.model.prescription.Disease;
 import com.erxproject.erx.model.prescription.Parameter;
 import com.erxproject.erx.model.prescription.Symptom;
 
@@ -312,6 +313,97 @@ public class PrescriptionController {
 						jsonParameter.getString("parameter_type"),
 						jsonParameter.getString("value"));
 				return p;
+			} else {
+				return null;
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	public ArrayList<Disease> getDiseasesDiagnosedList(int historyId)
+			throws NumberFormatException, JSONException {
+		JSONObject json, jsonDisease;
+		JSONArray jsonDiseaseList;
+		Disease tempDisease;
+		ArrayList<Disease> diseaseList = new ArrayList<Disease>();
+		int length;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_get_diseases_diagnosed)));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_history_id), "" + historyId));
+
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+
+		if (Integer.parseInt(json.getString("success")) == 1) {
+			jsonDiseaseList = json.getJSONArray("diseases");
+			length = jsonDiseaseList.length();
+
+			for (int i = 0; i < length; i++) {
+				jsonDisease = jsonDiseaseList.getJSONObject(i);
+				tempDisease = new Disease(jsonDisease.getInt("disease_id"),
+						jsonDisease.getInt("history_id"),
+						jsonDisease.getString("disease"));
+				diseaseList.add(tempDisease);
+			}
+			return diseaseList;
+		} else {
+			return diseaseList;
+		}
+
+	}
+
+	public int saveDiseaseDiagnosed(int historyId, String disease) {
+		JSONObject json;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_save_disease_diagnosed)));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_history_id), "" + historyId));
+		params.add(new BasicNameValuePair("disease", "" + disease));
+
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+
+		try {
+			if (Integer.parseInt(json.getString("success")) == 1) {
+				int diseaseId = json.getInt("disease_id");
+				return diseaseId;
+			} else {
+				return -1;
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public Disease getDiseaseFromId(int diseaseId) {
+		JSONObject json, jsonParameter;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_get_disease_diagnosed_from_id)));
+		params.add(new BasicNameValuePair("disease_id", "" + diseaseId));
+
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+
+		try {
+			if (Integer.parseInt(json.getString("success")) == 1) {
+				jsonParameter = json.getJSONObject("disease");
+				Disease d = new Disease(jsonParameter.getInt("disease_id"),
+						jsonParameter.getInt("history_id"),
+						jsonParameter.getString("disease"));
+				return d;
 			} else {
 				return null;
 			}

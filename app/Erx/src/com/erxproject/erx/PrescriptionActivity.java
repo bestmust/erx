@@ -48,7 +48,7 @@ public class PrescriptionActivity extends Activity {
 	}
 
 	public void openDiseaseDiagnosed(View view) {
-		Intent intent = new Intent(this, DiseaseDiagnosedActivity.class);
+		Intent intent = new Intent(this, DiseaseDiagnosedListActivity.class);
 		startActivity(intent);
 	}
 
