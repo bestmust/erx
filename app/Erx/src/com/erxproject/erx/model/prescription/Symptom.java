@@ -34,7 +34,7 @@ public class Symptom {
 		this.mSymptomId = mSymptomId;
 		this.mHistoryId = mHistoryId;
 	}
-	
+
 	public Symptom() {
 		super();
 		this.mName = "";

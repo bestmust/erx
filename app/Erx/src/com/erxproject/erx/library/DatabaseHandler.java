@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-	
+
 	private Context mContext;
 
 	// All Static variables
@@ -42,7 +42,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	 * Storing user details in database
 	 * */
 	public void addUser(String name, String email, String uid,
-			String created_at, String person_id, String doctor_id, String last_login, String login_number) {
+			String created_at, String person_id, String doctor_id,
+			String last_login, String login_number) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
@@ -109,7 +110,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
 				+ KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
 				+ KEY_CREATED_AT + " TEXT," + KEY_PERSON_ID + " TEXT,"
-				+ KEY_DOCTOR_ID + " TEXT," 
+				+ KEY_DOCTOR_ID + " TEXT,"
 				+ mContext.getString(R.string.key_last_login) + " TEXT,"
 				+ mContext.getString(R.string.key_login_number) + " TEXT)";
 		db.execSQL(CREATE_LOGIN_TABLE);

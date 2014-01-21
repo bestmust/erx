@@ -32,8 +32,7 @@ public class PrescriptionActivity extends Activity {
 		// prescription =
 		// Prescription.getNewPrescription(getApplicationContext());
 
-		pc = new PrescriptionController(
-				getApplicationContext());
+		pc = new PrescriptionController(getApplicationContext());
 
 		try {
 			prescription = pc.getUnsavedPrescription(patient.getPatientId(),
@@ -69,20 +68,20 @@ public class PrescriptionActivity extends Activity {
 		startActivity(intent);
 	}
 
-	public void savePrescription(View view) throws NumberFormatException, JSONException {
+	public void savePrescription(View view) throws NumberFormatException,
+			JSONException {
 		Context context = getApplicationContext();
-		
+
 		boolean isSaved;
-		
+
 		isSaved = pc.savePrescription(prescription.getHistoryId());
 		CharSequence text;
-		if(isSaved) {
+		if (isSaved) {
 			text = "Prescription Saved.";
-		}
-		else {
+		} else {
 			text = "Error in saving Prescription";
 		}
-			
+
 		int duration = Toast.LENGTH_SHORT;
 
 		Toast toast = Toast.makeText(context, text, duration);

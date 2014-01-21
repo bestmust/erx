@@ -46,8 +46,9 @@ public class SymptomAddEditFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				int historyId = prescription.getHistoryId();
-				int symptomId = prescriptionController.saveSymptom(historyId,inputSymptom.getText().toString());
-				
+				int symptomId = prescriptionController.saveSymptom(historyId,
+						inputSymptom.getText().toString());
+
 				Symptom s = prescriptionController.getSymptom(symptomId);
 
 				Prescription prescription = Prescription.get(getActivity());

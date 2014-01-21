@@ -91,14 +91,17 @@ public class LoginActivity extends Activity {
 							// Clear all previous data in database
 							doctorController
 									.logoutUser(getApplicationContext());
-							db.addUser(json_user.getString(KEY_NAME),
+							db.addUser(
+									json_user.getString(KEY_NAME),
 									json_user.getString(KEY_EMAIL),
 									json.getString(KEY_UID),
 									json_user.getString(KEY_CREATED_AT),
 									json_user.getString(KEY_PERSON_ID),
 									json_user.getString(KEY_DOCTOR_ID),
-									json_user.getString(getString(R.string.key_last_login)),
-									json_user.getString(getString(R.string.key_login_number)));
+									json_user
+											.getString(getString(R.string.key_last_login)),
+									json_user
+											.getString(getString(R.string.key_login_number)));
 
 							// Launch Dashboard Screen
 							Intent dashboard = new Intent(

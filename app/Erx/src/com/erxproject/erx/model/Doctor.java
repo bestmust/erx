@@ -89,7 +89,7 @@ public class Doctor {
 	}
 
 	public void setLoginNumber(String loginNumber) {
-		this.loginNumber = Integer.parseInt(loginNumber) +1;
+		this.loginNumber = Integer.parseInt(loginNumber) + 1;
 	}
 
 }

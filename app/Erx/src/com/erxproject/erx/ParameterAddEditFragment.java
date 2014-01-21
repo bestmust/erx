@@ -46,12 +46,15 @@ public class ParameterAddEditFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				int historyId = prescription.getHistoryId();
-				int parameterId = prescriptionController.saveParameter(historyId,inputParameter.getText().toString(),inputValue.getText().toString());
-			
+				int parameterId = prescriptionController.saveParameter(
+						historyId, inputParameter.getText().toString(),
+						inputValue.getText().toString());
+
 				Parameter p = prescriptionController.getParameter(parameterId);
 
 				Prescription prescription = Prescription.get(getActivity());
-				ArrayList<Parameter> parameterList = prescription.getParameters();
+				ArrayList<Parameter> parameterList = prescription
+						.getParameters();
 				parameterList.add(p);
 				getActivity().finish();
 			}

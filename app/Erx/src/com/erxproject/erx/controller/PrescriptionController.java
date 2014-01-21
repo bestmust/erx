@@ -117,11 +117,12 @@ public class PrescriptionController {
 
 		return p;
 	}
-	
-	public boolean savePrescription(int historyId) throws NumberFormatException, JSONException {
-		
+
+	public boolean savePrescription(int historyId)
+			throws NumberFormatException, JSONException {
+
 		JSONObject json;
-		
+
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("tag", mContext
 				.getString(R.string.tag_save_prescription)));
@@ -131,59 +132,61 @@ public class PrescriptionController {
 				+ debuggerExtension, params);
 		if (Integer.parseInt(json.getString("success")) == 1) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	
-	public ArrayList<Symptom> getSymptomList(int historyId) throws NumberFormatException, JSONException {
-		JSONObject json,jsonSymptom;
+
+	public ArrayList<Symptom> getSymptomList(int historyId)
+			throws NumberFormatException, JSONException {
+		JSONObject json, jsonSymptom;
 		JSONArray jsonSymptomList;
 		Symptom tempSymptom;
 		ArrayList<Symptom> symptomList = new ArrayList<Symptom>();
 		int length;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_get_symptoms)));
-		params.add(new BasicNameValuePair(mContext.getString(R.string.key_history_id),"" + historyId));
-		
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_get_symptoms)));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_history_id), "" + historyId));
+
 		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
-		
+
 		if (Integer.parseInt(json.getString("success")) == 1) {
 			jsonSymptomList = json.getJSONArray("symptoms");
 			length = jsonSymptomList.length();
 
 			for (int i = 0; i < length; i++) {
 				jsonSymptom = jsonSymptomList.getJSONObject(i);
-				tempSymptom = new Symptom(
-						jsonSymptom.getString("symptom"),
+				tempSymptom = new Symptom(jsonSymptom.getString("symptom"),
 						jsonSymptom.getInt("symptom_id"),
 						jsonSymptom.getInt("history_id"));
 				symptomList.add(tempSymptom);
 			}
 			return symptomList;
-		}
-		else {
+		} else {
 			return symptomList;
 		}
-		
+
 	}
-	
+
 	public int saveSymptom(int historyId, String symptom) {
 		JSONObject json;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_save_symptom)));
-		params.add(new BasicNameValuePair(mContext.getString(R.string.key_history_id),"" + historyId));
-		params.add(new BasicNameValuePair(mContext.getString(R.string.key_symptom),"" + symptom));
-		
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_save_symptom)));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_history_id), "" + historyId));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_symptom), "" + symptom));
+
 		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
-		
+
 		try {
 			if (Integer.parseInt(json.getString("success")) == 1) {
 				int symptomId = json.getInt("symptom_id");
 				return symptomId;
-			}
-			else {
+			} else {
 				return -1;
 			}
 		} catch (NumberFormatException e) {
@@ -195,22 +198,25 @@ public class PrescriptionController {
 		}
 		return -1;
 	}
-	
+
 	public Symptom getSymptom(int symptomId) {
-		JSONObject json,jsonSymptom;
+		JSONObject json, jsonSymptom;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_get_symptom_from_symptom_id)));
-		params.add(new BasicNameValuePair(mContext.getString(R.string.key_symptom_id),"" + symptomId));
-		
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_get_symptom_from_symptom_id)));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_symptom_id), "" + symptomId));
+
 		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
-		
+
 		try {
 			if (Integer.parseInt(json.getString("success")) == 1) {
 				jsonSymptom = json.getJSONObject("symptom");
-				Symptom s = new Symptom(jsonSymptom.getString("symptom"),jsonSymptom.getInt("symptom_id"),jsonSymptom.getInt("history_id"));
+				Symptom s = new Symptom(jsonSymptom.getString("symptom"),
+						jsonSymptom.getInt("symptom_id"),
+						jsonSymptom.getInt("history_id"));
 				return s;
-			}
-			else {
+			} else {
 				return null;
 			}
 		} catch (NumberFormatException e) {
@@ -221,21 +227,24 @@ public class PrescriptionController {
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
-	
-	public ArrayList<Parameter> getParameterList(int historyId) throws NumberFormatException, JSONException {
-		JSONObject json,jsonParameter;
+
+	public ArrayList<Parameter> getParameterList(int historyId)
+			throws NumberFormatException, JSONException {
+		JSONObject json, jsonParameter;
 		JSONArray jsonParameterList;
 		Parameter tempParameter;
 		ArrayList<Parameter> parameterList = new ArrayList<Parameter>();
 		int length;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_get_parameters)));
-		params.add(new BasicNameValuePair(mContext.getString(R.string.key_history_id),"" + historyId));
-		
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_get_parameters)));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_history_id), "" + historyId));
+
 		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
-		
+
 		if (Integer.parseInt(json.getString("success")) == 1) {
 			jsonParameterList = json.getJSONArray("parameters");
 			length = jsonParameterList.length();
@@ -250,29 +259,29 @@ public class PrescriptionController {
 				parameterList.add(tempParameter);
 			}
 			return parameterList;
-		}
-		else {
+		} else {
 			return parameterList;
 		}
-		
+
 	}
-	
+
 	public int saveParameter(int historyId, String parameterType, String value) {
 		JSONObject json;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_save_parameter)));
-		params.add(new BasicNameValuePair(mContext.getString(R.string.key_history_id),"" + historyId));
-		params.add(new BasicNameValuePair("parameter_type","" + parameterType));
-		params.add(new BasicNameValuePair("value","" + value));
-		
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_save_parameter)));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_history_id), "" + historyId));
+		params.add(new BasicNameValuePair("parameter_type", "" + parameterType));
+		params.add(new BasicNameValuePair("value", "" + value));
+
 		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
-		
+
 		try {
 			if (Integer.parseInt(json.getString("success")) == 1) {
 				int parameterId = json.getInt("parameter_id");
 				return parameterId;
-			}
-			else {
+			} else {
 				return -1;
 			}
 		} catch (NumberFormatException e) {
@@ -284,22 +293,26 @@ public class PrescriptionController {
 		}
 		return -1;
 	}
-	
+
 	public Parameter getParameter(int parameterId) {
-		JSONObject json,jsonParameter;
+		JSONObject json, jsonParameter;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag",mContext.getString(R.string.tag_get_parameter_from_parameter_id)));
-		params.add(new BasicNameValuePair("parameter_id","" + parameterId));
-		
+		params.add(new BasicNameValuePair("tag", mContext
+				.getString(R.string.tag_get_parameter_from_parameter_id)));
+		params.add(new BasicNameValuePair("parameter_id", "" + parameterId));
+
 		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
-		
+
 		try {
 			if (Integer.parseInt(json.getString("success")) == 1) {
 				jsonParameter = json.getJSONObject("parameter");
-				Parameter p = new Parameter(jsonParameter.getInt("parameter_id"),jsonParameter.getInt("history_id"),jsonParameter.getString("parameter_type"),jsonParameter.getString("value"));
+				Parameter p = new Parameter(
+						jsonParameter.getInt("parameter_id"),
+						jsonParameter.getInt("history_id"),
+						jsonParameter.getString("parameter_type"),
+						jsonParameter.getString("value"));
 				return p;
-			}
-			else {
+			} else {
 				return null;
 			}
 		} catch (NumberFormatException e) {
@@ -310,7 +323,7 @@ public class PrescriptionController {
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
 
 }

@@ -27,8 +27,6 @@ public class ParametersListActivity extends SingleFragmentActivityWithAdd {
 						ParameterAddEditActivity.class);
 				startActivity(i);
 			}
-
 		});
 	}
-
 }

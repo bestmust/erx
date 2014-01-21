@@ -22,7 +22,7 @@ public class SymptomsListFragment extends ListFragment {
 	private ArrayList<Symptom> mSymptoms;
 	private PrescriptionController prescriptionController;
 	private Prescription prescription;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,9 +30,10 @@ public class SymptomsListFragment extends ListFragment {
 		Patient.get(getActivity());
 		prescriptionController = new PrescriptionController(getActivity());
 		prescription = Prescription.get(getActivity());
-		
+
 		try {
-			mSymptoms = prescriptionController.getSymptomList(prescription.getHistoryId());
+			mSymptoms = prescriptionController.getSymptomList(prescription
+					.getHistoryId());
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,7 +42,7 @@ public class SymptomsListFragment extends ListFragment {
 			e.printStackTrace();
 		}
 		prescription.setSymptoms(mSymptoms);
-		
+
 		SymptomsAdapter adapter = new SymptomsAdapter(mSymptoms);
 
 		setListAdapter(adapter);

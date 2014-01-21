@@ -33,9 +33,10 @@ public class ParametersListFragment extends ListFragment {
 		patient = Patient.get(getActivity());
 		prescriptionController = new PrescriptionController(getActivity());
 		prescription = Prescription.get(getActivity());
-		
+
 		try {
-			mParameters = prescriptionController.getParameterList(prescription.getHistoryId());
+			mParameters = prescriptionController.getParameterList(prescription
+					.getHistoryId());
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
