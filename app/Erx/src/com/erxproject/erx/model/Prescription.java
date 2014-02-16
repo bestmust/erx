@@ -20,7 +20,7 @@ public class Prescription {
 	private ArrayList<Symptom> mSymptoms;
 	private ArrayList<Parameter> mParamters;
 	private ArrayList<Disease> mDiseases;
-	private ArrayList<Medicine> mMedicine;
+	private ArrayList<PrescriptionMedicine> mMedicine;
 	private Note mNote;
 	private static Prescription mPrescription;
 
@@ -67,7 +67,7 @@ public class Prescription {
 		return mDiseases;
 	}
 
-	public ArrayList<Medicine> getMedicine() {
+	public ArrayList<PrescriptionMedicine> getMedicine() {
 		return mMedicine;
 	}
 
@@ -89,6 +89,14 @@ public class Prescription {
 
 	public void setDiseases(ArrayList<Disease> mDiseases) {
 		this.mDiseases = mDiseases;
+	}
+
+	public ArrayList<PrescriptionMedicine> getPrescriptionMedicine() {
+		return mMedicine;
+	}
+
+	public void setPrescriptionedicine(ArrayList<PrescriptionMedicine> prescriptionMedicine) {
+		this.mMedicine = prescriptionMedicine;
 	}
 
 }

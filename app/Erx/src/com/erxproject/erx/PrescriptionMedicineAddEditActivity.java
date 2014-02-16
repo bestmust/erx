@@ -1,13 +1,14 @@
 package com.erxproject.erx;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 
-public class MedicineListActivity extends SingleFragmentActivityWithAdd {
-
+public class PrescriptionMedicineAddEditActivity extends SingleFragmentActivity {
+	
 	@Override
 	protected Fragment createFragment() {
 		// TODO Auto-generated method stub
-		return null;
+		return new PrescriptionMedicineAddEditFragment();
 	}
 
 }

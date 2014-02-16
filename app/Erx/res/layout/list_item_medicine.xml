@@ -8,28 +8,33 @@
     <!-- Name Label -->
 
     <TextView
+        android:id="@+id/textViewMedicineName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Medicine Name" />
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/checkBoxMorning"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="M " />
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/checkBoxAfternoon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="A " />
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/checkBoxEvening"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="E " />
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/checkBoxNight"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="N" />
 
 </LinearLayout>

@@ -1,16 +1,27 @@
 package com.erxproject.erx;
 
+import java.io.IOException;
+import java.io.OutputStream;
+
 import org.json.JSONException;
 
 import com.erxproject.erx.controller.PrescriptionController;
 import com.erxproject.erx.model.Doctor;
 import com.erxproject.erx.model.Patient;
 import com.erxproject.erx.model.Prescription;
+import com.erxproject.erx.print.MyPrintDocumentAdapter;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.pdf.PdfDocument;
+import android.graphics.pdf.PdfDocument.Page;
+import android.graphics.pdf.PdfDocument.PageInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
+import android.print.PrintManager;
 import android.view.View;
 import android.widget.Toast;
 
@@ -53,7 +64,7 @@ public class PrescriptionActivity extends Activity {
 	}
 
 	public void openMedicines(View view) {
-		Intent intent = new Intent(this, Medicines.class);
+		Intent intent = new Intent(this, PrescriptionMedicineListActivity.class);
 		startActivity(intent);
 	}
 
@@ -87,6 +98,22 @@ public class PrescriptionActivity extends Activity {
 		Toast toast = Toast.makeText(context, text, duration);
 		toast.show();
 		finish();
+	}
+
+	@TargetApi(19)
+	public void printPrescription(View view) throws IOException{
+		
+		// Get a PrintManager instance
+	    PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+
+	    // Set job name, which will be displayed in the print queue
+	    String jobName = getString(R.string.app_name) + " Document";
+
+	    // Start a print job, passing in a PrintDocumentAdapter implementation
+	    // to handle the generation of a print document
+	    printManager.print(jobName, new MyPrintDocumentAdapter(this.getApplicationContext()),
+	            null); //
+		
 	}
 
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#3b3b3b" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medicine" />
+
+    <AutoCompleteTextView
+        android:id="@+id/inputMedicineName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="" />
+    
+    <CheckBox
+        android:id="@+id/checkBoxSetMorning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Morning" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSetAfternoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Afternoon" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSetEvening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Evening" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSetNight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Night" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/btnPrescriptionMedicineSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+
+        <Button
+            android:id="@+id/btnPrescriptionMedicineCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+    
+     <Button
+            android:id="@+id/btnPrescriptionMedicineSaveAddNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save and add more" />
+     
+      </LinearLayout>
+
+</LinearLayout>

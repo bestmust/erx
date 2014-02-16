@@ -15,6 +15,7 @@ import com.erxproject.erx.model.Prescription;
 import com.erxproject.erx.model.PrescriptionListItem;
 import com.erxproject.erx.model.prescription.Disease;
 import com.erxproject.erx.model.prescription.Parameter;
+import com.erxproject.erx.model.prescription.PrescriptionMedicine;
 import com.erxproject.erx.model.prescription.Symptom;
 
 import android.content.Context;
@@ -404,6 +405,120 @@ public class PrescriptionController {
 						jsonParameter.getInt("history_id"),
 						jsonParameter.getString("disease"));
 				return d;
+			} else {
+				return null;
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+	
+	public ArrayList<PrescriptionMedicine> getPrescriptionMedicineList(int historyId)
+			throws NumberFormatException, JSONException {
+		JSONObject json, jsonPrescriptionMedicine;
+		JSONArray jsonMedicineList;
+		PrescriptionMedicine tempMedicine;
+		ArrayList<PrescriptionMedicine> medicineList = new ArrayList<PrescriptionMedicine>();
+		int length;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", "get_prescription_medicine_list"));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_history_id), "" + historyId));
+
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+
+		if (Integer.parseInt(json.getString("success")) == 1) {
+			jsonMedicineList = json.getJSONArray("medicines");
+			length = jsonMedicineList.length();
+
+			for (int i = 0; i < length; i++) {
+				jsonPrescriptionMedicine = jsonMedicineList.getJSONObject(i);
+				tempMedicine = new PrescriptionMedicine(jsonPrescriptionMedicine.getInt("medicine_data_id"),
+						jsonPrescriptionMedicine.getInt("medicine_id"),
+						jsonPrescriptionMedicine.getInt("history_id"),
+						jsonPrescriptionMedicine.getString("medicine_name"),
+						jsonPrescriptionMedicine.getString("morning"),
+						jsonPrescriptionMedicine.getString("afternoon"),
+						jsonPrescriptionMedicine.getString("evening"),
+						jsonPrescriptionMedicine.getString("night"));
+				medicineList.add(tempMedicine);
+			}
+			return medicineList;
+		} else {
+			return medicineList;
+		}
+
+	}
+
+	public int savePrescriptionMedicine(int historyId, int medicineId, boolean morning, boolean afternoon, boolean evening, boolean night) {
+		JSONObject json;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", "save_prescription_medicine"));
+		params.add(new BasicNameValuePair(mContext
+				.getString(R.string.key_history_id), "" + historyId));
+		params.add(new BasicNameValuePair("medicine_id", "" + medicineId));
+		if(morning)
+			params.add(new BasicNameValuePair("morning", "Y"));
+		else
+			params.add(new BasicNameValuePair("morning", "N"));
+		if(afternoon)
+			params.add(new BasicNameValuePair("afternoon", "Y"));
+		else
+			params.add(new BasicNameValuePair("afternoon", "N"));
+		if(evening)
+			params.add(new BasicNameValuePair("evening", "Y"));
+		else
+			params.add(new BasicNameValuePair("evening", "N"));
+		if(night)
+			params.add(new BasicNameValuePair("night", "Y"));
+		else
+			params.add(new BasicNameValuePair("night", "N"));
+
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+
+		try {
+			if (Integer.parseInt(json.getString("success")) == 1) {
+				int medicineDataId = json.getInt("medicine_data_id");
+				return medicineDataId;
+			} else {
+				return -1;
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public PrescriptionMedicine getPrescriptionMedicineFromId (int medicineDataId) {
+		JSONObject json, jsonParameter;
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", "get_prescription_medicine_from_id"));
+		params.add(new BasicNameValuePair("medicine_data_id", "" + medicineDataId));
+
+		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
+
+		try {
+			if (Integer.parseInt(json.getString("success")) == 1) {
+				jsonParameter = json.getJSONObject("medicine");
+				 PrescriptionMedicine p = new PrescriptionMedicine(jsonParameter.getInt("medicine_data_id"),
+						 jsonParameter.getInt("medicine_id"),
+						 jsonParameter.getInt("history_id"),
+						 jsonParameter.getString("medicine_name"),
+						 jsonParameter.getString("morning"),
+						 jsonParameter.getString("afternoon"),
+						 jsonParameter.getString("evening"),
+							jsonParameter.getString("night"));
+				return p;
 			} else {
 				return null;
 			}

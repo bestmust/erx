@@ -81,6 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:onClick="printPrescription"
             android:text="Print Prescription" />
         
         <Button android:layout_width="fill_parent"

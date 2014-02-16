@@ -2,6 +2,17 @@ package com.erxproject.erx.model.prescription;
 
 public class Disease {
 
+	private int diseaseId;
+	private int historyId;
+	private String disease;
+
+	public Disease(int diseaseId, int historyId, String disease) {
+		super();
+		this.diseaseId = diseaseId;
+		this.historyId = historyId;
+		this.disease = disease;
+	}
+
 	public int getDiseaseId() {
 		return diseaseId;
 	}
@@ -23,17 +34,6 @@ public class Disease {
 	}
 
 	public void setDisease(String disease) {
-		this.disease = disease;
-	}
-
-	private int diseaseId;
-	private int historyId;
-	private String disease;
-
-	public Disease(int diseaseId, int historyId, String disease) {
-		super();
-		this.diseaseId = diseaseId;
-		this.historyId = historyId;
 		this.disease = disease;
 	}
 

@@ -109,6 +109,14 @@
             android:name=".DiseaseDiagnosedAddEditActivity"
             android:label="Disease Diagnosed" >
         </activity>
+        <activity
+            android:name=".PrescriptionMedicineListActivity"
+            android:label="Prescription Medicine" >
+        </activity>
+         <activity
+            android:name=".PrescriptionMedicineAddEditActivity"
+            android:label="Prescription Medicine Add" >
+        </activity>
     </application>
 
     <!-- Allow to connect with internet -->
