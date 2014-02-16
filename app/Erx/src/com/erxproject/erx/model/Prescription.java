@@ -95,7 +95,8 @@ public class Prescription {
 		return mMedicine;
 	}
 
-	public void setPrescriptionedicine(ArrayList<PrescriptionMedicine> prescriptionMedicine) {
+	public void setPrescriptionedicine(
+			ArrayList<PrescriptionMedicine> prescriptionMedicine) {
 		this.mMedicine = prescriptionMedicine;
 	}
 

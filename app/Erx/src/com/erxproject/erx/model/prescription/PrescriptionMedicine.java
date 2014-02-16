@@ -4,7 +4,7 @@ public class PrescriptionMedicine {
 
 	private int medicineDataId;
 	private int medicineId;
-	//private int prescriptionId;
+	// private int prescriptionId;
 	private int historyId;
 	private String medicineName;
 
@@ -12,7 +12,7 @@ public class PrescriptionMedicine {
 	private boolean afternoon;
 	private boolean evening;
 	private boolean night;
-	
+
 	public PrescriptionMedicine(int medicineDataId, int medicineId,
 			int historyId, String medicineName, String morning,
 			String afternoon, String evening, String night) {
@@ -21,19 +21,19 @@ public class PrescriptionMedicine {
 		this.medicineId = medicineId;
 		this.historyId = historyId;
 		this.medicineName = medicineName;
-		if(morning.equals("Y"))
+		if (morning.equals("Y"))
 			this.morning = true;
 		else if (morning.equals("N"))
 			this.morning = false;
-		if(afternoon.equals("Y"))
+		if (afternoon.equals("Y"))
 			this.afternoon = true;
 		else if (afternoon.equals("N"))
 			this.afternoon = false;
-		if(evening.equals("Y"))
+		if (evening.equals("Y"))
 			this.evening = true;
 		else if (evening.equals("N"))
 			this.evening = false;
-		if(night.equals("Y"))
+		if (night.equals("Y"))
 			this.night = true;
 		else if (night.equals("N"))
 			this.night = false;

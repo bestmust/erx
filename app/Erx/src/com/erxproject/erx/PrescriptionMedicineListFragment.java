@@ -32,8 +32,8 @@ public class PrescriptionMedicineListFragment extends ListFragment {
 		prescription = Prescription.get(getActivity());
 
 		try {
-			prescriptionMedicine = prescriptionController.getPrescriptionMedicineList(prescription
-					.getHistoryId());
+			prescriptionMedicine = prescriptionController
+					.getPrescriptionMedicineList(prescription.getHistoryId());
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +43,8 @@ public class PrescriptionMedicineListFragment extends ListFragment {
 		}
 		prescription.setPrescriptionedicine(prescriptionMedicine);
 
-		PrescriptionMedicineAdapter adapter = new PrescriptionMedicineAdapter(prescriptionMedicine);
+		PrescriptionMedicineAdapter adapter = new PrescriptionMedicineAdapter(
+				prescriptionMedicine);
 
 		setListAdapter(adapter);
 	}
@@ -54,9 +55,11 @@ public class PrescriptionMedicineListFragment extends ListFragment {
 		((PrescriptionMedicineAdapter) getListAdapter()).notifyDataSetChanged();
 	}
 
-	private class PrescriptionMedicineAdapter extends ArrayAdapter<PrescriptionMedicine> {
+	private class PrescriptionMedicineAdapter extends
+			ArrayAdapter<PrescriptionMedicine> {
 
-		public PrescriptionMedicineAdapter(ArrayList<PrescriptionMedicine> prescriptionMedicine) {
+		public PrescriptionMedicineAdapter(
+				ArrayList<PrescriptionMedicine> prescriptionMedicine) {
 			super(getActivity(), 0, prescriptionMedicine);
 		}
 
@@ -72,25 +75,24 @@ public class PrescriptionMedicineListFragment extends ListFragment {
 
 			TextView medicineNameTextView = (TextView) convertView
 					.findViewById(R.id.textViewMedicineName);
-			CheckBox morning = (CheckBox)convertView
+			CheckBox morning = (CheckBox) convertView
 					.findViewById(R.id.checkBoxMorning);
-			CheckBox afternoon = (CheckBox)convertView
+			CheckBox afternoon = (CheckBox) convertView
 					.findViewById(R.id.checkBoxAfternoon);
-			
-			CheckBox evening = (CheckBox)convertView
+
+			CheckBox evening = (CheckBox) convertView
 					.findViewById(R.id.checkBoxEvening);
-			
-			CheckBox night = (CheckBox)convertView
+
+			CheckBox night = (CheckBox) convertView
 					.findViewById(R.id.checkBoxNight);
-			
-			
+
 			medicineNameTextView.setText(m.getMedicineName());
-			
+
 			morning.setChecked(m.isMorning());
 			afternoon.setChecked(m.isAfternoon());
 			evening.setChecked(m.isEvening());
 			night.setChecked(m.isNight());
-			
+
 			morning.setClickable(false);
 			afternoon.setClickable(false);
 			evening.setClickable(false);

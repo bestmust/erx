@@ -52,7 +52,7 @@ public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
 		}
 
 		// Compute the expected number of printed pages
-		//int pages = computePageCount(newAttributes);
+		// int pages = computePageCount(newAttributes);
 		int pages = 1;
 
 		if (pages > 0) {

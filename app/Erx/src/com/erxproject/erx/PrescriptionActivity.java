@@ -101,19 +101,19 @@ public class PrescriptionActivity extends Activity {
 	}
 
 	@TargetApi(19)
-	public void printPrescription(View view) throws IOException{
-		
+	public void printPrescription(View view) throws IOException {
+
 		// Get a PrintManager instance
-	    PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+		PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
 
-	    // Set job name, which will be displayed in the print queue
-	    String jobName = getString(R.string.app_name) + " Document";
+		// Set job name, which will be displayed in the print queue
+		String jobName = getString(R.string.app_name) + " Document";
 
-	    // Start a print job, passing in a PrintDocumentAdapter implementation
-	    // to handle the generation of a print document
-	    printManager.print(jobName, new MyPrintDocumentAdapter(this.getApplicationContext()),
-	            null); //
-		
+		// Start a print job, passing in a PrintDocumentAdapter implementation
+		// to handle the generation of a print document
+		printManager.print(jobName,
+				new MyPrintDocumentAdapter(this.getApplicationContext()), null); //
+
 	}
 
 }

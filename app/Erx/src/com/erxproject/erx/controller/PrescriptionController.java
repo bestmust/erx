@@ -418,16 +418,17 @@ public class PrescriptionController {
 		return null;
 
 	}
-	
-	public ArrayList<PrescriptionMedicine> getPrescriptionMedicineList(int historyId)
-			throws NumberFormatException, JSONException {
+
+	public ArrayList<PrescriptionMedicine> getPrescriptionMedicineList(
+			int historyId) throws NumberFormatException, JSONException {
 		JSONObject json, jsonPrescriptionMedicine;
 		JSONArray jsonMedicineList;
 		PrescriptionMedicine tempMedicine;
 		ArrayList<PrescriptionMedicine> medicineList = new ArrayList<PrescriptionMedicine>();
 		int length;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag", "get_prescription_medicine_list"));
+		params.add(new BasicNameValuePair("tag",
+				"get_prescription_medicine_list"));
 		params.add(new BasicNameValuePair(mContext
 				.getString(R.string.key_history_id), "" + historyId));
 
@@ -439,7 +440,8 @@ public class PrescriptionController {
 
 			for (int i = 0; i < length; i++) {
 				jsonPrescriptionMedicine = jsonMedicineList.getJSONObject(i);
-				tempMedicine = new PrescriptionMedicine(jsonPrescriptionMedicine.getInt("medicine_data_id"),
+				tempMedicine = new PrescriptionMedicine(
+						jsonPrescriptionMedicine.getInt("medicine_data_id"),
 						jsonPrescriptionMedicine.getInt("medicine_id"),
 						jsonPrescriptionMedicine.getInt("history_id"),
 						jsonPrescriptionMedicine.getString("medicine_name"),
@@ -456,26 +458,27 @@ public class PrescriptionController {
 
 	}
 
-	public int savePrescriptionMedicine(int historyId, int medicineId, boolean morning, boolean afternoon, boolean evening, boolean night) {
+	public int savePrescriptionMedicine(int historyId, int medicineId,
+			boolean morning, boolean afternoon, boolean evening, boolean night) {
 		JSONObject json;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("tag", "save_prescription_medicine"));
 		params.add(new BasicNameValuePair(mContext
 				.getString(R.string.key_history_id), "" + historyId));
 		params.add(new BasicNameValuePair("medicine_id", "" + medicineId));
-		if(morning)
+		if (morning)
 			params.add(new BasicNameValuePair("morning", "Y"));
 		else
 			params.add(new BasicNameValuePair("morning", "N"));
-		if(afternoon)
+		if (afternoon)
 			params.add(new BasicNameValuePair("afternoon", "Y"));
 		else
 			params.add(new BasicNameValuePair("afternoon", "N"));
-		if(evening)
+		if (evening)
 			params.add(new BasicNameValuePair("evening", "Y"));
 		else
 			params.add(new BasicNameValuePair("evening", "N"));
-		if(night)
+		if (night)
 			params.add(new BasicNameValuePair("night", "Y"));
 		else
 			params.add(new BasicNameValuePair("night", "N"));
@@ -499,25 +502,28 @@ public class PrescriptionController {
 		return -1;
 	}
 
-	public PrescriptionMedicine getPrescriptionMedicineFromId (int medicineDataId) {
+	public PrescriptionMedicine getPrescriptionMedicineFromId(int medicineDataId) {
 		JSONObject json, jsonParameter;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tag", "get_prescription_medicine_from_id"));
-		params.add(new BasicNameValuePair("medicine_data_id", "" + medicineDataId));
+		params.add(new BasicNameValuePair("tag",
+				"get_prescription_medicine_from_id"));
+		params.add(new BasicNameValuePair("medicine_data_id", ""
+				+ medicineDataId));
 
 		json = jsonParser.getJSONFromUrl(site + prescriptionExtension, params);
 
 		try {
 			if (Integer.parseInt(json.getString("success")) == 1) {
 				jsonParameter = json.getJSONObject("medicine");
-				 PrescriptionMedicine p = new PrescriptionMedicine(jsonParameter.getInt("medicine_data_id"),
-						 jsonParameter.getInt("medicine_id"),
-						 jsonParameter.getInt("history_id"),
-						 jsonParameter.getString("medicine_name"),
-						 jsonParameter.getString("morning"),
-						 jsonParameter.getString("afternoon"),
-						 jsonParameter.getString("evening"),
-							jsonParameter.getString("night"));
+				PrescriptionMedicine p = new PrescriptionMedicine(
+						jsonParameter.getInt("medicine_data_id"),
+						jsonParameter.getInt("medicine_id"),
+						jsonParameter.getInt("history_id"),
+						jsonParameter.getString("medicine_name"),
+						jsonParameter.getString("morning"),
+						jsonParameter.getString("afternoon"),
+						jsonParameter.getString("evening"),
+						jsonParameter.getString("night"));
 				return p;
 			} else {
 				return null;

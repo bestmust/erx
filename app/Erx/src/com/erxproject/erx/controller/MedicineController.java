@@ -30,7 +30,7 @@ public class MedicineController {
 		medicineExtension = mContext.getString(R.string.medicine_extension);
 		debuggerExtension = mContext.getString(R.string.debugger_extension);
 	}
-	
+
 	public ArrayList<Medicine> getMedicineAllList()
 			throws NumberFormatException, JSONException {
 		JSONObject json, jsonMedicine;

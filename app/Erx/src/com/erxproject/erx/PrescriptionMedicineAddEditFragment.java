@@ -54,17 +54,19 @@ public class PrescriptionMedicineAddEditFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_prescription_medicine_add_edit, parent,
-				false);
+		View v = inflater
+				.inflate(R.layout.fragment_prescription_medicine_add_edit,
+						parent, false);
 
-		inputMedicine = (AutoCompleteTextView) v.findViewById(R.id.inputMedicineName);
+		inputMedicine = (AutoCompleteTextView) v
+				.findViewById(R.id.inputMedicineName);
 		btnSave = (Button) v.findViewById(R.id.btnPrescriptionMedicineSave);
 		btnCancel = (Button) v.findViewById(R.id.btnPrescriptionMedicineCancel);
 		morning = (CheckBox) v.findViewById(R.id.checkBoxSetMorning);
 		afternoon = (CheckBox) v.findViewById(R.id.checkBoxSetAfternoon);
 		evening = (CheckBox) v.findViewById(R.id.checkBoxSetEvening);
 		night = (CheckBox) v.findViewById(R.id.checkBoxSetNight);
-		
+
 		try {
 			medicines = medicineController.getMedicineAllList();
 		} catch (NumberFormatException e) {
@@ -74,39 +76,45 @@ public class PrescriptionMedicineAddEditFragment extends Fragment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		medicineNames = new ArrayList<String>();
 		int length = medicines.size();
-		
-		for(int index = 0; index< length;index++) {
+
+		for (int index = 0; index < length; index++) {
 			medicineNames.add(medicines.get(index).getMedicineName());
 		}
-		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
-                android.R.layout.simple_dropdown_item_1line, medicineNames);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				this.getActivity(),
+				android.R.layout.simple_dropdown_item_1line, medicineNames);
 		inputMedicine.setAdapter(adapter);
-		
+
 		inputMedicine.setOnClickListener(this.listener);
 
 		btnSave.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				 
-				String name = inputMedicine.getText().toString();
-				
-				int index = medicineNames.indexOf(name);
-				
-				tempMedicine = medicines.get(index);
-				
-				int historyId = prescription.getHistoryId();
-				int medicineDataId = prescriptionController.savePrescriptionMedicine(historyId ,
-						tempMedicine.getMedicineId(), morning.isChecked(), afternoon.isChecked(), evening.isChecked(), night.isChecked());
 
-				PrescriptionMedicine m = prescriptionController.getPrescriptionMedicineFromId(medicineDataId);
+				String name = inputMedicine.getText().toString();
+
+				int index = medicineNames.indexOf(name);
+
+				tempMedicine = medicines.get(index);
+
+				int historyId = prescription.getHistoryId();
+				int medicineDataId = prescriptionController
+						.savePrescriptionMedicine(historyId,
+								tempMedicine.getMedicineId(),
+								morning.isChecked(), afternoon.isChecked(),
+								evening.isChecked(), night.isChecked());
+
+				PrescriptionMedicine m = prescriptionController
+						.getPrescriptionMedicineFromId(medicineDataId);
 
 				Prescription prescription = Prescription.get(getActivity());
-				ArrayList<PrescriptionMedicine> medicineList = prescription.getPrescriptionMedicine();
+				ArrayList<PrescriptionMedicine> medicineList = prescription
+						.getPrescriptionMedicine();
 				medicineList.add(m);
 				getActivity().finish();
 			}
@@ -122,13 +130,14 @@ public class PrescriptionMedicineAddEditFragment extends Fragment {
 
 		return v;
 	}
-	
-	public class Listener implements  OnItemClickListener {
 
-	@Override
-	public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-		tempMedicine = medicines.get(position);
-		
-	}
+	public class Listener implements OnItemClickListener {
+
+		@Override
+		public void onItemClick(AdapterView<?> adapterView, View view,
+				int position, long id) {
+			tempMedicine = medicines.get(position);
+
+		}
 	}
 }

@@ -6,7 +6,7 @@ public class Medicine {
 	String type;
 	String dose;
 	String Manufacturer;
-	
+
 	public Medicine(int medicineId, String medicineName, String type,
 			String dose, String manufacturer) {
 		super();
@@ -36,6 +36,5 @@ public class Medicine {
 	public String getManufacturer() {
 		return Manufacturer;
 	}
-	
 
 }
