@@ -107,7 +107,7 @@ public class PrescriptionActivity extends Activity {
 		PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
 
 		// Set job name, which will be displayed in the print queue
-		String jobName = getString(R.string.app_name) + " Document";
+		String jobName = getString(R.string.app_name) + "_Document";
 
 		// Start a print job, passing in a PrintDocumentAdapter implementation
 		// to handle the generation of a print document

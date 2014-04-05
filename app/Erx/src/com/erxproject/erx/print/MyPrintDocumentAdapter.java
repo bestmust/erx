@@ -1,5 +1,6 @@
 package com.erxproject.erx.print;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -15,6 +16,7 @@ import android.graphics.pdf.PdfDocument.Page;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
+import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.print.PageRange;
 import android.print.PrintAttributes;
@@ -35,6 +37,7 @@ public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
 	public MyPrintDocumentAdapter(Context context) {
 		super();
 		this.context = context.getApplicationContext();
+		//totalPages = compute
 	}
 
 	@Override
@@ -94,7 +97,8 @@ public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
 			final WriteResultCallback callback) {
 		// Iterate over each page of the document,
 		// check if it's in the output range.
-		for (int i = 0; i < totalPages; i++) {
+		//for (int i = 0; i < totalPages; i++) {
+		for (int i = 0; i < 1; i++) {
 			// Check to see if this page is in the output range.
 			if (containsPage(pageRanges, i)) {
 				// If so, add it to writtenPagesArray. writtenPagesArray.size()
@@ -117,9 +121,10 @@ public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
 				mPdfDocument.finishPage(page);
 			}
 		}
-
+		
 		// Write PDF document to file
 		try {
+			//File file = new File(Environment.getExternalStoragePublicDirectory(null), "DemoFile.jpg");
 			mPdfDocument.writeTo(new FileOutputStream(destination
 					.getFileDescriptor()));
 		} catch (IOException e) {
@@ -164,10 +169,10 @@ public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
 		Paint paint = new Paint();
 		paint.setColor(Color.BLACK);
 		paint.setTextSize(36);
-		canvas.drawText("Test Title", leftMargin, titleBaseLine, paint);
+		canvas.drawText("Mustaqim Page", leftMargin, titleBaseLine, paint);
 
 		paint.setTextSize(11);
-		canvas.drawText("Test paragraph", leftMargin, titleBaseLine + 25, paint);
+		canvas.drawText("Prescriptions", leftMargin, titleBaseLine + 25, paint);
 
 		paint.setColor(Color.BLUE);
 		canvas.drawRect(100, 100, 172, 172, paint);
