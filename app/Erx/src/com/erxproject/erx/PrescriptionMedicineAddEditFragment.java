@@ -25,6 +25,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class PrescriptionMedicineAddEditFragment extends Fragment {
 
@@ -99,6 +100,14 @@ public class PrescriptionMedicineAddEditFragment extends Fragment {
 				String name = inputMedicine.getText().toString();
 
 				int index = medicineNames.indexOf(name);
+				
+				if(index < 0)
+				{
+					Toast t = Toast.makeText(getActivity(),
+							String.format("%s not found in the database", name), Toast.LENGTH_SHORT);
+					t.show();
+					return;
+				}
 
 				tempMedicine = medicines.get(index);
 

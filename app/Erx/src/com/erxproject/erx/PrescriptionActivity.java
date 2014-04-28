@@ -102,6 +102,14 @@ public class PrescriptionActivity extends Activity {
 
 	@TargetApi(19)
 	public void printPrescription(View view) throws IOException {
+		
+		//Check if the Android version is 4.4 or higher.
+		if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.KITKAT) {
+			Toast t = Toast.makeText(getApplicationContext(),
+					String.format("This feature is only available in Android 4.4 or higher.\nYour version: Android %s", Build.VERSION.RELEASE), Toast.LENGTH_SHORT);
+			t.show();
+			return;
+		}
 
 		// Get a PrintManager instance
 		PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);

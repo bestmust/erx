@@ -5,6 +5,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.erxproject.erx.model.Doctor;
+import com.erxproject.erx.model.Patient;
+import com.erxproject.erx.model.Prescription;
+import com.erxproject.erx.model.prescription.Disease;
+import com.erxproject.erx.model.prescription.Parameter;
+import com.erxproject.erx.model.prescription.PrescriptionMedicine;
+import com.erxproject.erx.model.prescription.Symptom;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -168,14 +177,109 @@ public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
 
 		Paint paint = new Paint();
 		paint.setColor(Color.BLACK);
-		paint.setTextSize(36);
-		canvas.drawText("Mustaqim Page", leftMargin, titleBaseLine, paint);
-
+		paint.setTextSize(30);
+		Doctor doctor = Doctor.get(context);
+		canvas.drawText( "Doctor: " + doctor.getName(), leftMargin, titleBaseLine+=30, paint);
+		Patient patient = Patient.get(context);
+		canvas.drawText( "Patient: " + patient.getName(), leftMargin, titleBaseLine+=30, paint);
+		canvas.drawText("Prescription", leftMargin, titleBaseLine+=30, paint);
+				
+		Prescription prescription = Prescription.get(context);
+		
+		ArrayList<PrescriptionMedicine> medicines = prescription.getMedicine();
+		paint.setTextSize(13);
+		canvas.drawText("Medicines", leftMargin, titleBaseLine+=30, paint);
+		
+		
+		Iterator<PrescriptionMedicine> medicineIterator = medicines.iterator();
+		PrescriptionMedicine medicine;
 		paint.setTextSize(11);
-		canvas.drawText("Prescriptions", leftMargin, titleBaseLine + 25, paint);
-
-		paint.setColor(Color.BLUE);
-		canvas.drawRect(100, 100, 172, 172, paint);
-	}
-
+		int j=1;
+		String morning = "", afternoon = "", evening= "", night = "";
+		Boolean isFirst = true;
+		while(medicineIterator.hasNext())
+		{
+			medicine = medicineIterator.next();
+			
+			if(medicine.isMorning())
+			{
+				morning = "Morning";
+				isFirst = false;
+			}
+			if(medicine.isAfternoon()&&isFirst)
+			{
+				afternoon = "Afternoon";
+				isFirst = false;
+			}
+			else if(medicine.isAfternoon()) 
+			{
+				afternoon = ", Afternoon";
+			}
+			if(medicine.isEvening()&&isFirst)
+			{
+				evening = "Evening";
+				isFirst = false;
+			}
+			else if(medicine.isEvening())
+			{
+				evening = ", Evening";
+			}
+			if(medicine.isNight()&&isFirst)
+			{
+				night = "Night";
+				isFirst = false;
+			}
+			else if (medicine.isNight())
+			{
+				night = ", Night";
+			}
+			
+			String medicineDetails  = String.format(j+ ". %s: %s%s%s%s", medicine.getMedicineName(),morning,afternoon,evening,night);
+			canvas.drawText(medicineDetails, leftMargin, titleBaseLine +=22, paint);
+			j++;
+		}
+		
+		ArrayList<Symptom> symptoms = prescription.getSymptoms();
+		paint.setTextSize(13);
+		canvas.drawText("Symptoms", leftMargin, titleBaseLine+=30, paint);
+		paint.setTextSize(11);
+		Iterator<Symptom> symptomIterator = symptoms.iterator();
+		j=1;
+		Symptom symptom;
+		while(symptomIterator.hasNext())
+		{
+			symptom = symptomIterator.next();
+			canvas.drawText(j + ". " + symptom.getName() + "\nDetails: " + symptom.getDetails(),leftMargin, titleBaseLine+=22, paint);
+			j++;
+		}
+		
+		ArrayList<Parameter> paramters = prescription.getParameters();
+		paint.setTextSize(13);
+		canvas.drawText("Parameters", leftMargin, titleBaseLine+=30, paint);
+		paint.setTextSize(11);
+		Iterator<Parameter> parameterIterator = paramters.iterator();
+		j=1;
+		Parameter parameter;
+		while(parameterIterator.hasNext())
+		{
+			parameter = parameterIterator.next();
+			canvas.drawText(j + ". " + parameter.getmParameterType() + ": " + parameter.getmParameterValue(),leftMargin, titleBaseLine+=22, paint);
+			j++;
+		}
+		
+		ArrayList<Disease> diseases = prescription.getDisease();
+		paint.setTextSize(13);
+		canvas.drawText("Disease Diagnosed", leftMargin, titleBaseLine+=30, paint);
+		paint.setTextSize(11);
+		Iterator<Disease> diseaseIterator = diseases.iterator();
+		j=1;
+		Disease disease;
+		while(diseaseIterator.hasNext())
+		{
+			disease = diseaseIterator.next();
+			canvas.drawText(j + ". " + disease.getDisease(),leftMargin, titleBaseLine+=22, paint);
+			j++;
+		}
+				
+	}	
 }

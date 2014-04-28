@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import android.content.Context;
 
 import com.erxproject.erx.R;
+import com.erxproject.erx.controller.PrescriptionController;
 import com.erxproject.erx.model.prescription.*;
 
 public class Prescription {
@@ -23,9 +24,11 @@ public class Prescription {
 	private ArrayList<PrescriptionMedicine> mMedicine;
 	private Note mNote;
 	private static Prescription mPrescription;
+	private PrescriptionController prescriptionController;
 
 	private Prescription(Context context) {
 		mContext = context.getApplicationContext();
+		prescriptionController = new PrescriptionController(mContext);
 	}
 
 	public static Prescription get(Context context) {
@@ -56,18 +59,70 @@ public class Prescription {
 	}
 
 	public ArrayList<Symptom> getSymptoms() {
+		
+		if(mSymptoms == null)
+		{
+			try {
+				mSymptoms = prescriptionController.getSymptomList(historyId);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return mSymptoms;
 	}
 
 	public ArrayList<Parameter> getParameters() {
+		
+		if(mParamters == null)
+		{
+			try {
+				mParamters = prescriptionController.getParameterList(historyId);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		return mParamters;
 	}
 
 	public ArrayList<Disease> getDisease() {
+		
+		if(mDiseases == null)
+		{
+			try {
+				mDiseases = prescriptionController.getDiseasesDiagnosedList(historyId);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return mDiseases;
 	}
 
 	public ArrayList<PrescriptionMedicine> getMedicine() {
+		if(mMedicine==null)
+		{
+			try {
+				mMedicine = prescriptionController.getPrescriptionMedicineList(historyId);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return mMedicine;
 	}
 
