@@ -16,6 +16,12 @@ class DB_Connect {
     public function connect() {
         require_once 'config.php';
 
+        /*
+        $mysqli_host = "mysql16.000webhost.com";
+        $mysqli_database = "a8748905_android";
+        $mysqli_user = "a8748905_root";
+        $mysqli_password = "tiger123";
+        */
         $mysqli_host = "localhost";
         $mysqli_database = "1541215_android";
         $mysqli_user = "root";

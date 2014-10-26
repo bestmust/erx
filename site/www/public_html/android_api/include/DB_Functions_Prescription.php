@@ -108,6 +108,71 @@ class DB_Functions_Prescription {
         $result = mysqli_fetch_array($result);
         return $result;
     }
+    
+    public function getDiseases($historyId) {
+        $result = mysqli_query($this->mysqli, "SELECT * from disease where history_id = $historyId;");
+        $rows = array();
+        while ($r = mysqli_fetch_assoc($result)) {
+            $rows[] = $r;
+        }
+        return $rows;
+    }
+
+    public function saveDisease($historyId, $disease) {
+        $result = mysqli_query($this->mysqli, "insert into disease (history_id,disease) values($historyId,'$disease');");
+        if ($result == true) {
+            $diseaseId = mysqli_insert_id($this->mysqli);
+            return $diseaseId;
+        } else {
+            return false;
+        }
+    }
+    
+    public function getDisease($diseaseId) {
+        $result = mysqli_query($this->mysqli, "select * from disease where disease_id = $diseaseId;");
+        $result = mysqli_fetch_array($result);
+        return $result;
+    }
+    
+    public function getPrescriptionMedicineList($historyId) {
+        $result = mysqli_query($this->mysqli, "SELECT m.medicine_data_id, m.medicine_id, ma.medicine_name , m.history_id, m.morning, m.afternoon, m.evening, m.night
+FROM medicine AS m, medicines_all AS ma
+WHERE m.medicine_id = ma.medicine_id and m.history_id = $historyId;");
+        $rows = array();
+        while ($r = mysqli_fetch_assoc($result)) {
+            $rows[] = $r;
+        }
+        return $rows;
+    }
+
+    public function savePrescriptionMedicine($historyId, $medicineId, $medicineName, $morning, $afternoong, $evening, $night) {
+        
+        $medicine = mysqli_query($this->mysqli,"select * from medicines_all where medicine_name = '$medicineName';");
+        $no_of_rows = mysqli_num_rows($medicine);
+        
+        if($no_of_rows==0){
+            $result = mysqli_query($this->mysqli, "insert into medicines_all (medicine_name, type, dose, manufacturer) values('$medicineName','tablet','500mg','suryansh');");
+            if ($result != true) {
+                return false;
+            }
+        }
+        $result = mysqli_query($this->mysqli, "insert into medicine (medicine_id, history_id, morning, afternoon, evening, night) values ((select medicine_id from medicines_all where medicine_name = '$medicineName'), $historyId, '$morning','$afternoong','$evening','$night');");
+        if ($result == true) {
+            $medicineId = mysqli_insert_id($this->mysqli);
+            return $medicineId;
+        } else {
+            return false;
+        }
+    }
+    
+    public function getPrescriptionMedicine($medicineId) {
+        $result = mysqli_query($this->mysqli, "SELECT m.medicine_data_id, m.medicine_id, ma.medicine_name , m.history_id, m.morning, m.afternoon, m.evening, m.night
+FROM medicine AS m, medicines_all AS ma
+WHERE m.medicine_id = ma.medicine_id and m.medicine_data_id = $medicineId;");
+        $result = mysqli_fetch_array($result);
+        return $result;
+    }
+    
 }
 
 ?>

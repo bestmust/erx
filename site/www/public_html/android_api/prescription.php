@@ -173,9 +173,97 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             $response["error_msg"] = "Error in getting the parameter.";
             echo json_encode($response);
         }
+    } else if ($tag == 'get_disease_diagnosed_list') {
+        $historyId = $_POST["history_id"];
+        $diseases = $dbFunctionsPrescription->getDiseases($historyId);
+        
+        if($diseases!= false) {
+            $response["success"] = 1;
+            $response["diseases"] = $diseases;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in getting symptoms.";
+            echo json_encode($response);
+        }
+    } else if ($tag == 'save_disease_diagnosed') {
+        $historyId = $_POST["history_id"];
+        $disease = $_POST["disease"];
+        $diseaseId = $dbFunctionsPrescription->saveDisease($historyId,$disease);
+        
+        if($diseaseId!= false) {
+            $response["success"] = 1;
+            $response["disease_id"] = $diseaseId;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in saving symptom.";
+            echo json_encode($response);
+        }
+    }
+    else if ($tag == 'get_disease_diagnosed_from_id') {
+        $diseaseId = $_POST["disease_id"];
+        $disease = $dbFunctionsPrescription->getDisease($diseaseId);
+        
+        if($disease!= false) {
+            $response["success"] = 1;
+            $response["disease"] = $disease;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in getting the symptom.";
+            echo json_encode($response);
+        }
+    }
+    else if ($tag == 'get_prescription_medicine_list') {
+        $historyId = $_POST["history_id"];
+        $prescriptionMedicines = $dbFunctionsPrescription->getPrescriptionMedicineList($historyId);
+        
+        if($prescriptionMedicines!= false) {
+            $response["success"] = 1;
+            $response["medicines"] = $prescriptionMedicines;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in getting symptoms.";
+            echo json_encode($response);
+        }
+    } else if ($tag == 'save_prescription_medicine') {
+        $historyId = $_POST["history_id"];
+        $medicineId = $_POST["medicine_id"];
+        $medicineName = $_POST["medicine_name"];
+        $morning = $_POST["morning"];
+        $afternoong = $_POST["afternoon"];
+        $evening= $_POST["evening"];
+        $night = $_POST["night"];
+        $medicineDataId = $dbFunctionsPrescription->savePrescriptionMedicine($historyId, $medicineId, $medicineName, $morning, $afternoong, $evening, $night);
+        
+        if($medicineDataId != false) {
+            $response["success"] = 1;
+            $response["medicine_data_id"] = $medicineDataId;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in saving prescription medicine.";
+            echo json_encode($response);
+        }
+    }
+    else if ($tag == 'get_prescription_medicine_from_id') {
+        $medicineId = $_POST["medicine_data_id"];
+        $medicine = $dbFunctionsPrescription->getPrescriptionMedicine($medicineId);
+        
+        if($medicine != false) {
+            $response["success"] = 1;
+            $response["medicine"] = $medicine;
+            echo json_encode($response);
+        }else {
+            $response["error"] = 1;
+            $response["error_msg"] = "Error in getting the symptom.";
+            echo json_encode($response);
+        }
     }
     else {
-        print "Access Denied";
+        print "Wrong tag!";
     }
 } else {
     echo 'Access Denied!';
